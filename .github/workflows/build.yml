@@ -1,0 +1,45 @@
+name: 시험 · 빌드
+
+on:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 핵심 계산 시험
+        run: node tests/run_tests.js
+
+      - name: 앱 HTML 조립
+        run: |
+          python assemble.py dist/LLRN_CP1B_4D_공정관리.html
+          python pretest/build.py dist/LLRN_사전점검_파일저장.html
+
+      - name: 결과물 올리기 (Actions 실행 화면에서 내려받기)
+        uses: actions/upload-artifact@v4
+        with:
+          name: LLRN_CP1B_4D_app
+          path: dist/
+          retention-days: 30
+
+      - name: 버전 태그면 Release 만들기
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          generate_release_notes: true

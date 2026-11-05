@@ -1,0 +1,543 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>LLRN CP1B 4D 공정관리</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzEiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMSAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMwLjgzOTggMy4wNjI3NEwzMC44OTkxIDIuNjMyMlYyLjYyOTg1QzMwLjg5OTEgMi42MTQ3NyAzMC45MDI5IDIuNjAwNjQgMzAuOTAyOSAyLjU4NjUxQzMwLjkwMyAyLjQ5NTE2IDMwLjg3MTEgMi40MDY2NSAzMC44MTI4IDIuMzM2MzVDMzAuNzU0NCAyLjI2NjA1IDMwLjY3MzMgMi4yMTg0IDMwLjU4MzUgMi4yMDE2N0wyOS4wMDg4IDEuOTM5M0gyOS4wMDQ2QzI4Ljk3OTYgMS45MzkzIDI4Ljk1MDkgMS45MzQxMSAyOC45MTkzIDEuOTM0MTFDMjguODI2NiAxLjkzNDAyIDI4LjczNjkgMS45NjcyOCAyOC42NjY3IDIuMDI3ODFDMjguNTk2NSAyLjA4ODM1IDI4LjU1MDQgMi4xNzIxMyAyOC41MzY4IDIuMjYzODVMMjguNDY4NSAyLjY4MDI1QzI4LjM0NzUgMy4zOTE1MyAyNy44NDc3IDQuNzM3NzggMjYuODAwMSA0LjczNzc4QzI2LjAzODkgNC43Mzc3OCAyNS4wOTYzIDQuMTY2ODcgMjMuOTA4MyAzLjQ0MzgxQzIzLjQxMTggMy4xNDA0NiAyMi44NTI3IDIuODA0NiAyMi4yNDYgMi40NzI5OUMxOS45OTQ5IDEuMTkwOCAxNy40NjAyIDAgMTQuMjYwOCAwQzkuMzc3OTkgMCA0Ljg2OTYyIDIuNzI4MyAyLjIwMjA5IDcuMjkyMjVDMC43NzI1MzUgOS43MTY1IDAuMDEzMTg0MSAxMi40NzcyIDAuMDAxODMzNDYgMTUuMjkxNUMtMC4wMzQ5MTU3IDE3Ljk2NjMgMC40ODExMzQgMjAuNjE5OSAxLjUxNzY2IDIzLjA4NTlDNC4wMTQyIDI4LjgzMjcgOS4yMzMzOCAzMiAxNi4yMTcxIDMyQzIyLjAzNCAzMiAyNi45MDA0IDI5LjQyNzEgMjkuMjMyNiAyNS4xMTk5QzMwLjM0MDcgMjIuOTg1OCAzMC44OTQ5IDIwLjYwNzYgMzAuODQ0NSAxOC4yMDM2QzMwLjgzMTIgMTcuMTQ0NCAzMC41Nzk4IDE2LjEwMTcgMzAuMTA4NyAxNS4xNTNDMjkuNjM3NiAxNC4yMDQyIDI4Ljk1OSAxMy4zNzM3IDI4LjEyMzIgMTIuNzIyOUMyNi44ODQzIDExLjc0NDcgMjUuNDQ2MyAxMS4wNDkzIDIzLjkxMDIgMTAuNjg1N0MyNS40MDMxIDEwLjQ2NTkgMjYuODA4MSA5Ljg0MzgzIDI3Ljk3NDQgOC44ODYyN0MyOS41MDM0IDcuNTc4MTggMzAuNDY2MiA1LjYxNzIyIDMwLjgzOTggMy4wNjI3NFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zLjk5MjU2IDguOTA2ODVMMi45MDkxNSA3LjcwODk4QzEuNTU2NzcgMTAuMDA4NSAwLjgzNzEzNCAxMi42MjUxIDAuODIzMzY0IDE1LjI5MjhIMS41NzA0NEMxLjUyMjEgMTIuOTMxMSAyLjM5MDE3IDEwLjY0MjQgMy45OTI1NiA4LjkwNjg1WiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzc5XzM1NTYyKSIvPgo8cGF0aCBkPSJNMy43OTk5NiAyMC42NTYzQzMuMDcwOTkgMTkuOTczIDIuNDk1MzMgMTkuMTQyOCAyLjExMTAxIDE4LjIyMDVDMS43MjY2OSAxNy4yOTgyIDEuNTQyNDYgMTYuMzA0OSAxLjU3MDUgMTUuMzA2MlYxNS4yOTNIMC44MjIwMDlDMC43ODgxNjUgMTcuODUzMSAxLjI4MDAzIDIwLjM5MjkgMi4yNjcxOCAyMi43NTUzTDMuNzk5OTYgMjAuNjU2M1oiIGZpbGw9InVybCgjcGFpbnQxX2xpbmVhcl83OV8zNTU2MikiLz4KPHBhdGggZD0iTTI3LjYwMjMgMTMuMzYxM0wyNi4yMTQxIDE0Ljc5NTdDMjguMTM3OSAxNC44MjMgMjkuMzE5NyAxNi4zMTEgMjkuMjc1OSAxOC4yMDUxSDMwLjAyNDRDMzAuMDExMyAxNy4yNjc1IDI5Ljc4NjcgMTYuMzQ0OSAyOS4zNjczIDE1LjUwNjJDMjguOTQ3OSAxNC42Njc1IDI4LjM0NDYgMTMuOTM0MyAyNy42MDIzIDEzLjM2MTNaIiBmaWxsPSJ1cmwoI3BhaW50Ml9saW5lYXJfNzlfMzU1NjIpIi8+CjxwYXRoIGQ9Ik0zMC4wMjY2IDE4LjIwMzFIMjkuMjc4MUMyOS4yNDEzIDE5Ljc2MjMgMjguNDA4MSAyMS4wNzE4IDI2LjU1OTIgMjIuMDQ0NUwyOC41MTA3IDI0LjcyOTVDMjkuNTU2NiAyMi43MTYgMzAuMDc3OSAyMC40NzE0IDMwLjAyNjYgMTguMjAzMVoiIGZpbGw9InVybCgjcGFpbnQzX2xpbmVhcl83OV8zNTU2MikiLz4KPHBhdGggZD0iTTQuNzczMiAxMy4xMTEzQzQuNzE4NTYgMTMuNDA2NSA0LjY5MDk2IDEzLjcwNiA0LjY5MDc3IDE0LjAwNjNDNC42OTA3NyAxOC40NzIyIDguMDE4NyAyMS4zMjM5IDEyLjIyMDkgMjEuMzIzOUMyMC4yMDk4IDIxLjMyMzkgMjIuNTgwNiAxNC43OTY3IDI2LjE1NzcgMTQuNzk2N0gyNi4yMTQyTDI3LjYwMjQgMTMuMzYyOEMyNS44NzcgMTEuOTQyNiAyMy4zMTU5IDExLjA1NDcgMjAuMjA5OCAxMS4wNTQ3QzEzLjg4NTEgMTEuMDU0NyAxMC41MTU3IDE2LjMzNjEgNy42NDU2MyAxNi4zMzYxQzYuMzk2NDIgMTYuMzM2MSA1LjQzODMyIDE0Ljk2MzkgNS40MzgzMiAxMy42MzI3QzUuNDM5MSAxMy40OTggNS40NDcxMSAxMy4zNjM0IDUuNDYyMzQgMTMuMjI5NUw0Ljc3MzIgMTMuMTExM1oiIGZpbGw9InVybCgjcGFpbnQ0X2xpbmVhcl83OV8zNTU2MikiLz4KPHBhdGggZD0iTTkuNzI0NjIgNi41NTk0NkMxNC4zNDA5IDYuNTU5NDYgMTcuNTQ0IDEwLjA1MjMgMjEuNjY1MiAxMC4wNTIzQzI2LjYwNTUgMTAuMDUyMyAyOS4zMzk0IDcuNjQ2MTYgMzAuMDI2NyAyLjkzOTQ4TDI5LjI3ODIgMi44MTU1OUMyOS4wNyA0LjA2MTk4IDI4LjI1NzkgNS41NTk0MyAyNi44MDE0IDUuNTU5NDNDMjUuNDI4MyA1LjU1OTQzIDIzLjk3MjMgNC4zNTMwOCAyMS44NTI2IDMuMTg4MTlDMTkuNzI5MiAxLjk4MzI1IDE3LjI5NTcgMC44MTgzNTkgMTQuMjU4OSAwLjgxODM1OUM5LjM3MzIyIDAuODE4MzU5IDUuMjUxNTcgMy42OTkyNyAyLjkwNjcxIDcuNzA1OThMMy45OTAxMSA4LjkwMzg1QzQuNzM0NjEgOC4xNDE0IDUuNjI3NzIgNy41Mzk5MiA2LjYxNDEyIDcuMTM2NjZDNy42MDA1MiA2LjczMzM5IDguNjU5MjEgNi41MzY5NCA5LjcyNDYyIDYuNTU5NDZaIiBmaWxsPSJ1cmwoI3BhaW50NV9saW5lYXJfNzlfMzU1NjIpIi8+CjxwYXRoIGQ9Ik0xNC41NTA0IDIzLjk0MjNDMTAuOTc0NyAyMy45NDIzIDYuNDUzNTYgMjMuMTY1NSAzLjc5OTY5IDIwLjY1NjJMMi4yNjY5MSAyMi43NTcxQzQuNDcwOTMgMjcuODI2IDkuMTcxOTYgMzEuMTc3NSAxNi4yMTQ2IDMxLjE3NzVDMjAuODY5OSAzMS4xNzc1IDI2LjAxOTggMjkuMzMyNCAyOC41MDg5IDI0LjczMDNMMjYuNTU3MyAyMi4wNDU0QzI0LjI2NDcgMjMuMjUxNyAyMC40MDM2IDIzLjk0MjMgMTQuNTUwNCAyMy45NDIzWiIgZmlsbD0idXJsKCNwYWludDZfbGluZWFyXzc5XzM1NTYyKSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzc5XzM1NTYyIiB4MT0iNC40MjY3NCIgeTE9IjkuMzE2NzYiIHgyPSItMC42MjMwNjQiIHkyPSIxMC4xOTgzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGQkIwMDAiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQzhCOTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl83OV8zNTU2MiIgeDE9Ii0wLjEyNzEzNCIgeTE9IjE2Ljk3OTQiIHgyPSI0LjE3MDc2IiB5Mj0iMTcuNjY0IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNDOEI5MDAiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjN0RCMDFCIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQyX2xpbmVhcl83OV8zNTU2MiIgeDE9IjI2LjgzNTIiIHkxPSIxNC4xNTA5IiB4Mj0iMzAuNjE4NiIgeTI9IjE2LjQ5NTMiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzY1QzFFRSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMEEyQjYiLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDNfbGluZWFyXzc5XzM1NTYyIiB4MT0iMzAuNzEzOCIgeTE9IjE5LjY1MiIgeDI9IjI2LjgzMjQiIHkyPSIyMC43NDc2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiMwMEEyQjYiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDA4RDg1Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQ0X2xpbmVhcl83OV8zNTU2MiIgeDE9IjYuMjk0NTgiIHkxPSIxNi4xODkzIiB4Mj0iMjYuMTU5IiB5Mj0iMTYuMTg5MyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjMDA1OEE2Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzY1QzFFRSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50NV9saW5lYXJfNzlfMzU1NjIiIHgxPSIyLjkwNjcxIiB5MT0iNS40MzUzMSIgeDI9IjMwLjAyNjciIHkyPSI1LjQzNTMxIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGQkIwMDAiLz4KPHN0b3Agb2Zmc2V0PSIwLjY2NiIgc3RvcC1jb2xvcj0iI0VBNjgwQyIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNFMzQ5MTIiLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDZfbGluZWFyXzc5XzM1NTYyIiB4MT0iMy43ODg5NCIgeTE9IjI1LjkxNjkiIHgyPSIyNi41NjY5IiB5Mj0iMjUuOTE2OSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjN0RCMDFCIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwOEQ4NSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPgo=">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.121.0/Build/Cesium/Widgets/widgets.css">
+<style>
+/* GS E&C Enterprise UI standard (01-enterprise-ai-ui-standards.md): light-first shell = sticky white header + fixed side navigation + #EEF1F5 content canvas with white bordered cards */
+:root{
+  --color-bg-page:#ffffff; --color-bg-content:#eef1f5; --color-bg-surface:#ffffff; --color-bg-surface-alt-1:#f2f3f6; --color-bg-surface-alt-2:#e2e4e9; --color-bg-inverse:#1d1f24;
+  --color-text-strong:#000000; --color-text-primary:#1c1c1c; --color-text-secondary:#303030; --color-text-muted:#737373; --color-text-hint:#b0b0b0; --color-text-disabled:#c4c4c4; --color-text-inverse:#ebeced;
+  --color-action-primary:#0f6fff; --color-action-primary-hover:#0e65e8; --color-action-primary-active:#0b4fb5;
+  --color-action-secondary:#1d1f24; --color-action-secondary-hover:#282b33;
+  --color-border-default:#e2e4e9; --color-border-strong:#ccd0d6; --color-divider-default:#e9ebef;
+  --color-status-success:#15b874; --color-status-warning:#ffa833; --color-status-danger:#e63b3b;
+  --color-accent-orange:#fe6f3f; --color-accent-purple:#b357ff; --color-accent-skyblue:#00bdde;
+  --color-primary-subtle:#e8f1ff; --color-success-subtle:#e3f7ef; --color-warning-subtle:#fff3e0;
+  --radius-xs:4px; --radius-sm:8px; --radius-md:12px; --radius-lg:16px; --radius-pill:9999px;
+  --shadow-level-1:0px 1px 3px rgba(0,0,0,.06); --shadow-level-2:0px 2px 8px rgba(0,0,0,.08); --shadow-level-3:0px 4px 12px rgba(0,0,0,.12);
+  --font-sans:"Pretendard Variable","Pretendard","Apple SD Gothic Neo","Noto Sans KR","Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-mono:"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --header-h:64px; --nav-w:280px;
+  color-scheme:light;
+}
+[data-theme="dark"]{
+  --color-bg-page:#1d1f24; --color-bg-content:#15171c; --color-bg-surface:#1d1f24; --color-bg-surface-alt-1:#282b33; --color-bg-surface-alt-2:#333741; --color-bg-inverse:#ffffff;
+  --color-text-strong:#ffffff; --color-text-primary:#ebeced; --color-text-secondary:#c4c4c4; --color-text-muted:#8a8a8a; --color-text-hint:#737373; --color-text-disabled:#5c5c5c; --color-text-inverse:#000000;
+  --color-action-primary:#3f8cff; --color-action-primary-hover:#0f6fff; --color-action-primary-active:#0e65e8;
+  --color-action-secondary:#e9ebef; --color-action-secondary-hover:#ccd0d6;
+  --color-border-default:#333741; --color-border-strong:#4a505f; --color-divider-default:#282b33;
+  --color-status-success:#44c690; --color-status-warning:#ffb95c; --color-status-danger:#eb5e5e;
+  --color-accent-orange:#fe8c65; --color-accent-purple:#c279ff; --color-accent-skyblue:#33cae5;
+  --color-primary-subtle:#16284a; --color-success-subtle:#14352a; --color-warning-subtle:#3d2e14;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--color-bg-content);color:var(--color-text-primary);font-family:var(--font-sans);font-size:14px;line-height:1.5;font-weight:400}
+.ic{width:24px;height:24px;flex:none;display:block}
+.ic.sm{width:20px;height:20px}.ic.xs{width:16px;height:16px}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--color-action-primary);outline-offset:2px}
+/* ---------- header ---------- */
+.gnb{position:fixed;inset:0 0 auto 0;height:var(--header-h);background:var(--color-bg-page);border-bottom:1px solid var(--color-border-default);display:flex;align-items:center;gap:16px;padding:0 20px;z-index:20}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand img{height:28px;width:auto;display:block}
+.brand .logo-dark{display:none}[data-theme="dark"] .brand .logo-light{display:none}[data-theme="dark"] .brand .logo-dark{display:block}
+.brand .divider{width:1px;height:20px;background:var(--color-border-strong)}
+.brand .svc{font-size:18px;font-weight:700;white-space:nowrap;color:var(--color-text-primary)}
+.gnb .meta{display:flex;align-items:center;gap:8px;margin-left:8px;min-width:0;overflow:hidden}
+.badge{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 8px;border-radius:var(--radius-xs);font-size:12px;font-weight:600;white-space:nowrap;background:var(--color-bg-surface-alt-1);color:var(--color-text-secondary)}
+.badge.primary{background:var(--color-primary-subtle);color:var(--color-action-primary)}
+.gnb .util{margin-left:auto;display:flex;align-items:center;gap:4px}
+.icon-btn{width:40px;height:40px;border:0;background:transparent;border-radius:var(--radius-pill);display:inline-flex;align-items:center;justify-content:center;color:var(--color-text-secondary);cursor:pointer}
+.icon-btn:hover{background:var(--color-bg-surface-alt-1)}
+/* ---------- side nav ---------- */
+.sidenav{position:fixed;top:var(--header-h);bottom:0;left:0;width:var(--nav-w);background:var(--color-bg-page);border-right:1px solid var(--color-border-default);overflow-y:auto;padding:16px 12px 24px;z-index:10}
+.nav-section{padding:8px 0}.nav-section+.nav-section{border-top:1px solid var(--color-divider-default);margin-top:8px;padding-top:16px}
+.nav-title{font-size:12px;font-weight:600;color:var(--color-text-muted);padding:0 12px 8px}
+.nav-item{display:flex;align-items:center;gap:12px;width:100%;height:48px;padding:0 12px;border:0;background:transparent;border-radius:var(--radius-sm);color:var(--color-text-secondary);font-size:15px;font-weight:400;text-align:left;cursor:pointer}
+.nav-item:hover{background:var(--color-bg-surface-alt-1)}
+.nav-item[aria-current="true"]{background:var(--color-primary-subtle);color:var(--color-action-primary);font-weight:600}
+.nav-item.d2{height:44px;padding-left:48px;font-size:14px}
+.nav-item.d2[aria-pressed="true"]{color:var(--color-action-primary);font-weight:600}
+.nav-item .caret{margin-left:auto;transition:transform .15s}
+.nav-item[aria-expanded="true"] .caret{transform:rotate(180deg)}
+/* ---------- content ---------- */
+.content{position:fixed;top:var(--header-h);left:var(--nav-w);right:0;bottom:0;overflow-y:auto;background:var(--color-bg-content)}
+.page{padding:24px 28px 40px;display:flex;flex-direction:column;gap:20px;max-width:1880px}
+.page-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.page-head h1{margin:0;font-size:24px;font-weight:700;line-height:1.35;color:var(--color-text-strong)}
+.page-head p{margin:4px 0 0;font-size:14px;color:var(--color-text-muted)}
+.asof{display:flex;align-items:center;gap:8px;color:var(--color-text-secondary)}
+.asof .val{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--color-text-strong)}
+.card{background:var(--color-bg-surface);border:1px solid var(--color-border-default);border-radius:var(--radius-md);box-shadow:var(--shadow-level-1);min-width:0}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--color-divider-default);flex-wrap:wrap}
+.card-head h2{margin:0;font-size:18px;font-weight:700;display:flex;align-items:center;gap:8px}
+.card-head .sub{font-size:13px;font-weight:600;color:var(--color-text-muted)}
+.card-body{padding:16px 20px}
+.kpis{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.kpi{padding:16px 20px;display:flex;flex-direction:column;gap:8px}
+.kpi .l{font-size:13px;font-weight:600;color:var(--color-text-muted)}
+.kpi .v{font-size:24px;font-weight:700;color:var(--color-text-strong);font-variant-numeric:tabular-nums}
+.kpi .v small{font-size:14px;font-weight:400;color:var(--color-text-muted)}
+.meter{height:6px;border-radius:var(--radius-pill);background:var(--color-bg-surface-alt-2);overflow:hidden}.meter i{display:block;height:100%;background:var(--color-action-primary);border-radius:inherit}
+.grid-main{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:20px;align-items:start}
+.side-col{display:flex;flex-direction:column;gap:20px}
+/* map card */
+.viewer-wrap{position:relative;height:620px;background:#5d7a86;overflow:hidden}
+#cesium{position:absolute;inset:0}
+.cesium-viewer-bottom,.cesium-widget-credits{display:none!important}
+#credits{position:absolute;right:8px;bottom:6px;font-size:10px;color:#fff;text-shadow:0 0 3px #000;z-index:2;pointer-events:none}
+#credits a{color:#fff}
+.map-hint{position:absolute;left:12px;bottom:10px;z-index:2;font-size:12px;font-weight:600;color:#fff;background:rgba(29,31,36,.6);border-radius:var(--radius-xs);padding:4px 8px;pointer-events:none}
+.map-legend{position:absolute;right:12px;top:12px;z-index:2;background:var(--color-bg-surface);border:1px solid var(--color-border-default);border-radius:var(--radius-sm);box-shadow:var(--shadow-level-2);padding:10px 12px;display:grid;grid-template-columns:auto auto;gap:4px 12px;font-size:12px;color:var(--color-text-secondary)}
+.map-legend span{display:flex;align-items:center;gap:6px}.sw{width:12px;height:12px;border-radius:2px;flex:none;border:1px solid rgba(0,0,0,.15)}
+.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 20px;border-bottom:1px solid var(--color-divider-default)}
+.toolbar .grp{display:flex;gap:4px;flex-wrap:wrap;align-items:center}
+.toolbar .sep{width:1px;height:24px;background:var(--color-border-default);margin:0 4px}
+.btn{height:36px;padding:0 12px;border-radius:var(--radius-sm);border:1px solid var(--color-border-default);background:var(--color-bg-surface);color:var(--color-text-secondary);font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--color-border-strong);background:var(--color-bg-surface-alt-1)}
+.btn[aria-pressed="true"]{background:var(--color-primary-subtle);border-color:var(--color-action-primary);color:var(--color-action-primary)}
+.btn.primary{background:var(--color-action-primary);border-color:var(--color-action-primary);color:#fff;min-width:96px;justify-content:center}
+.btn.primary:hover{background:var(--color-action-primary-hover)}.btn.primary:active{background:var(--color-action-primary-active)}
+.field{display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--color-text-muted)}
+.input,.select{height:36px;border:1px solid var(--color-border-default);border-radius:var(--radius-sm);background:var(--color-bg-surface);color:var(--color-text-primary);font:14px var(--font-sans);padding:0 10px}
+.input{width:96px;font-variant-numeric:tabular-nums}
+.check{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--color-text-secondary);cursor:pointer;white-space:nowrap}
+.check input{width:16px;height:16px;accent-color:var(--color-action-primary);margin:0}
+/* transport */
+.transport{padding:14px 20px 16px;display:flex;flex-direction:column;gap:8px}
+.trow{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.tdate{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--color-text-strong);min-width:7.2em}
+.tphase{font-size:14px;color:var(--color-text-muted);flex:1;min-width:0}
+#slider{width:100%;accent-color:var(--color-action-primary);margin:0;height:24px}
+.ticks{position:relative;height:16px;font-size:11px;color:var(--color-text-muted)}
+.ticks span{position:absolute;transform:translateX(-50%);white-space:nowrap}.ticks span.ms{color:var(--color-action-primary);font-weight:600}
+/* lists */
+.zrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--color-divider-default);font-size:14px}
+.zrow:last-child{border-bottom:0}
+.zrow .nm{font-weight:600}
+.pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--radius-pill);font-size:12px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pill.none{background:var(--color-bg-surface-alt-1);color:var(--color-text-muted)}
+.pill.run{background:var(--color-primary-subtle);color:var(--color-action-primary)}
+.pill.done{background:var(--color-success-subtle);color:var(--color-status-success)}
+.zbar{height:4px;border-radius:var(--radius-pill);background:var(--color-bg-surface-alt-2);margin-top:6px;overflow:hidden}.zbar i{display:block;height:100%;background:var(--color-action-primary)}
+.zrow .l{flex:1;min-width:0}
+#active{display:flex;flex-direction:column;max-height:300px;overflow:auto}
+#active .g{font-size:12px;font-weight:600;color:var(--color-text-muted);padding:10px 0 4px}
+#active .a{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:4px 0}
+#active .a span:last-child{font-size:12px;color:var(--color-text-muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.empty{font-size:14px;color:var(--color-text-muted);padding:8px 0}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:14px}
+.kv dt{color:var(--color-text-muted);font-weight:600;font-size:13px}.kv dd{margin:0;font-variant-numeric:tabular-nums;text-align:right}
+.sel-title{font-size:16px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+/* profile & gantt */
+#prof{height:220px}
+#prof svg,#gantt svg{display:block}
+#prof text{font:11px var(--font-sans);fill:var(--color-text-muted)}
+#prof .ttl{font-size:12px;font-weight:600;fill:var(--color-text-secondary)}
+#gantt{overflow-x:auto}
+#gantt text{font:13px var(--font-sans);fill:var(--color-text-primary)}
+#gantt .yr{font-size:11px;fill:var(--color-text-muted)}
+#gantt .row{cursor:pointer}
+#gantt .row:hover rect.bg{fill:var(--color-bg-surface-alt-1)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.note{font-size:14px;color:var(--color-text-secondary);margin:0 0 10px}.note b{font-weight:600;color:var(--color-text-primary)}
+.legend2{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:14px}.legend2 span{display:flex;align-items:center;gap:8px}
+.alert{display:flex;gap:10px;align-items:flex-start;background:var(--color-warning-subtle);border:1px solid var(--color-status-warning);border-radius:var(--radius-sm);padding:12px 14px;font-size:14px;color:var(--color-text-primary)}
+.alert[hidden]{display:none}
+/* contract strip */
+.cstrip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr)) auto;align-items:stretch}
+.cstrip .c{padding:14px 20px;border-right:1px solid var(--color-divider-default);display:flex;flex-direction:column;gap:4px;min-width:0}
+.cstrip .c:last-of-type{border-right:0}
+.cstrip .l{font-size:13px;font-weight:600;color:var(--color-text-muted)}
+.cstrip .v{font-size:20px;font-weight:700;color:var(--color-text-strong);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cstrip .s{font-size:12px;color:var(--color-text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cstrip .v.neg{color:var(--color-status-danger)}.cstrip .v.pos{color:var(--color-status-success)}
+.cstrip .act{display:flex;align-items:center;padding:0 12px}
+.cstrip .input{width:100%;max-width:150px;height:32px}
+.cedit[hidden]{display:none}
+.pill.warn{background:var(--color-warning-subtle);color:#a15c00}[data-theme="dark"] .pill.warn{color:var(--color-status-warning)}
+.pill.bad{background:rgba(230,59,59,.12);color:var(--color-status-danger)}
+/* critical path */
+.cp-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:16px}
+.cp-stats .st{background:var(--color-bg-surface-alt-1);border-radius:var(--radius-sm);padding:12px 14px}
+.cp-stats .st .l{font-size:12px;font-weight:600;color:var(--color-text-muted)}.cp-stats .st .v{font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+.cp-flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin-bottom:16px}
+.cp-flow .ph{border:1px solid var(--color-border-default);border-left:3px solid var(--color-status-danger);border-radius:var(--radius-sm);padding:6px 10px;font-size:13px;background:var(--color-bg-surface)}
+.cp-flow .ph b{display:block;font-weight:600}.cp-flow .ph span{color:var(--color-text-muted);font-size:12px;font-variant-numeric:tabular-nums}
+.cp-flow .ar{align-self:center;color:var(--color-text-hint)}
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{position:sticky;top:0;background:var(--color-bg-surface-alt-1);text-align:left;font-weight:600;color:var(--color-text-muted);padding:8px 10px;border-bottom:1px solid var(--color-border-default);white-space:nowrap;z-index:1}
+.tbl td{padding:8px 10px;border-bottom:1px solid var(--color-divider-default);vertical-align:middle}
+.tbl td.n{font-variant-numeric:tabular-nums;white-space:nowrap;text-align:right}.tbl td.d{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tbl tbody tr:hover{background:var(--color-bg-surface-alt-1)}
+.tbl .grp{color:var(--color-text-muted);font-size:12px}
+.tbl tr.clk{cursor:pointer}
+.tbl-wrap{max-height:520px;overflow:auto;border:1px solid var(--color-border-default);border-radius:var(--radius-sm)}
+details.near{margin-top:16px}details.near summary{cursor:pointer;font-weight:600;font-size:14px;padding:6px 0}
+.cp-note{font-size:13px;color:var(--color-text-muted);margin:12px 0 0}
+/* dialog (blocking modal) */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:100;display:flex;align-items:center;justify-content:center;padding:24px}
+.scrim[hidden]{display:none}
+.dialog{background:var(--color-bg-surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-level-3);width:min(1180px,100%);max-height:calc(100vh - 48px);display:flex;flex-direction:column;overflow:hidden}
+.dlg-head{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;border-bottom:1px solid var(--color-divider-default)}
+.dlg-head h2{margin:0;font-size:20px;font-weight:700}
+.dlg-body{padding:20px 24px;overflow:auto;flex:1}
+.dlg-foot{display:flex;align-items:center;gap:8px;padding:14px 24px;border-top:1px solid var(--color-divider-default)}.dlg-foot .grow{flex:1}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.drop{display:flex;flex-direction:column;align-items:center;gap:8px;padding:36px 16px;border:1.5px dashed var(--color-border-strong);border-radius:var(--radius-md);cursor:pointer;color:var(--color-text-secondary);text-align:center}
+.drop:hover,.drop.over{border-color:var(--color-action-primary);background:var(--color-primary-subtle);color:var(--color-action-primary)}
+.drop b{font-size:16px;font-weight:600}.drop span{font-size:13px;color:var(--color-text-muted)}
+.help{font-size:13px;color:var(--color-text-muted);margin:12px 0 0}
+.err{margin-top:12px;display:flex;gap:8px;align-items:flex-start;border:1px solid var(--color-status-danger);background:rgba(230,59,59,.08);border-radius:var(--radius-sm);padding:10px 12px;font-size:14px}
+.err[hidden]{display:none}
+.sumgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.sumgrid .st{background:var(--color-bg-surface-alt-1);border-radius:var(--radius-sm);padding:10px 12px;min-width:0}
+.sumgrid .l{font-size:12px;font-weight:600;color:var(--color-text-muted)}.sumgrid .v{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.maphead{display:flex;align-items:center;gap:12px;margin-bottom:10px;flex-wrap:wrap}.maphead h3{margin:0;font-size:16px;font-weight:700}.maphead #impStat{flex:1;font-size:13px;color:var(--color-text-muted)}
+.maptbl select{width:100%;min-width:260px;max-width:420px}
+.maptbl .sub{display:block;font-size:12px;color:var(--color-text-muted);font-variant-numeric:tabular-nums}
+.maptbl tr.sec td{background:var(--color-bg-surface-alt-1);font-weight:700;font-size:13px}
+.maptbl tr[hidden]{display:none}
+@media (max-width:1280px){.kpis{grid-template-columns:repeat(3,minmax(0,1fr))}.grid-main{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+@media (max-width:1280px){.cstrip{grid-template-columns:repeat(3,minmax(0,1fr))}.cp-stats,.sumgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){:root{--nav-w:0px}.sidenav{display:none}.page{padding:16px 16px 32px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.viewer-wrap{height:460px}.gnb .meta{display:none}}
+
+/* ---------- Rev.5 실적 ---------- */
+:root{--chart-plan:#8a8f98;--chart-cur:#c27a00}
+[data-theme="dark"]{--chart-plan:#9aa0a8;--chart-cur:#f0a030}
+.bltbl .bln{width:100%;max-width:360px;height:32px}.bltbl .select{height:32px}
+.seg{display:inline-flex;gap:0}.seg .btn{border-radius:0;margin-left:-1px}.seg .btn:first-child{border-radius:var(--radius-sm) 0 0 var(--radius-sm);margin-left:0}.seg .btn:last-child{border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+.seg .btn[aria-pressed="true"]{position:relative;z-index:1}
+#sec-prog.off .card-body{padding:16px 20px}
+.pstrip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));border:1px solid var(--color-divider-default);border-radius:var(--radius-sm);margin-bottom:12px}
+.pstrip .c{padding:12px 16px;border-right:1px solid var(--color-divider-default);display:flex;flex-direction:column;gap:4px;min-width:0}
+.pstrip .c:last-child{border-right:0}
+.pstrip .l{font-size:12px;font-weight:600;color:var(--color-text-muted)}
+.pstrip .v{font-size:20px;font-weight:700;color:var(--color-text-strong);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pstrip .v.neg{color:var(--color-status-danger)}.pstrip .v.pos{color:var(--color-status-success)}
+.pstrip .s{font-size:12px;color:var(--color-text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scurve{position:relative;font-size:12px}.scurve svg{display:block}
+.sclegend{display:flex;gap:16px;flex-wrap:wrap;margin-top:6px;font-size:12px;color:var(--color-text-secondary)}
+.sclegend span{display:inline-flex;align-items:center;gap:6px}.sclegend i{display:inline-block;width:18px;height:3px;border-radius:2px}.sclegend i.dash{height:0;border-top:2px dashed;background:none}
+.sctip{position:absolute;pointer-events:none;background:var(--color-bg-surface);border:1px solid var(--color-border-default);border-radius:var(--radius-sm);box-shadow:var(--shadow-level-2);padding:6px 10px;display:flex;flex-direction:column;gap:2px;font-size:12px;color:var(--color-text-secondary);white-space:nowrap}
+.sctip b{color:var(--color-text-primary)}
+.sctip[hidden]{display:none}
+.scurve text.halo{paint-order:stroke;stroke:var(--color-bg-surface);stroke-width:4px;stroke-linejoin:round}
+.filebar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:12px 20px;border-bottom:1px solid var(--color-divider-default);background:var(--color-bg-surface-alt-1)}
+.filebar .fl{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--color-text-secondary);min-width:0}
+.filebar .fb{display:flex;gap:6px;flex-wrap:wrap}
+.filebar .dirty{color:var(--color-status-danger);font-weight:600}
+.fmsg{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 20px 0;padding:10px 14px;border-radius:var(--radius-sm);font-size:13px;border:1px solid var(--color-border-default);background:var(--color-bg-surface-alt-1)}
+.fmsg[hidden]{display:none}.fmsg span{flex:1;min-width:200px}
+.fmsg.ok{border-color:var(--color-status-success);background:var(--color-success-subtle)}
+.fmsg.warn{border-color:var(--color-status-warning);background:var(--color-warning-subtle)}
+.toolbar .grow{flex:1}
+.acttbl .an{font-weight:600;color:var(--color-text-primary)}
+.acttbl .input{height:32px}.acttbl .din{width:140px}.acttbl .pin{width:72px}
+.acttbl .cp{display:inline-block;font-size:11px;font-weight:700;color:var(--color-status-danger);border:1px solid var(--color-status-danger);border-radius:var(--radius-pill);padding:0 6px;margin-left:4px}
+.neg{color:var(--color-status-danger);font-weight:600}.pos{color:var(--color-status-success);font-weight:600}
+.icon-btn.sm{width:32px;height:32px}
+@media (max-width:1200px){.pstrip{grid-template-columns:repeat(3,minmax(0,1fr))}.pstrip .c:nth-child(3){border-right:0}.pstrip .c:nth-child(-n+3){border-bottom:1px solid var(--color-divider-default)}}
+@media (max-width:640px){.pstrip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* ---------- Rev.6 가상 현장 · 메신저 ---------- */
+.simstate{display:flex;gap:16px;flex-wrap:wrap;justify-content:space-between;padding:10px 20px;font-size:13px;color:var(--color-text-secondary);border-bottom:1px solid var(--color-divider-default)}
+.simgrid{display:grid;grid-template-columns:230px minmax(0,1fr) 380px;height:560px}
+.simchats{border-right:1px solid var(--color-divider-default);overflow:auto;min-height:0;padding:8px}
+.simchats .chat{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;text-align:left;border:0;background:none;padding:10px 12px;border-radius:var(--radius-sm);cursor:pointer;color:var(--color-text-primary);font:inherit}
+.simchats .chat:hover{background:var(--color-bg-surface-alt-1)}.simchats .chat.on{background:var(--color-primary-subtle)}
+.simchats .cn{font-weight:600;font-size:14px}.simchats .cs{font-size:12px;color:var(--color-text-muted)}
+.simchats .cnt{font-style:normal;display:inline-block;min-width:18px;padding:0 6px;border-radius:9px;background:var(--color-status-danger);color:#fff;font-size:11px;text-align:center;margin-left:4px}
+.simconv{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;border-right:1px solid var(--color-divider-default)}
+.simmsgs{flex:1;min-height:0;overflow:auto;padding:14px 16px;background:var(--color-bg-surface-alt-1);display:flex;flex-direction:column;gap:10px}
+.msg{max-width:78%;align-self:flex-start}.msg.me{align-self:flex-end}
+.msg .mh{font-size:11px;color:var(--color-text-muted);margin:0 4px 3px}.msg.me .mh{text-align:right}
+.msg .mb{background:var(--color-bg-surface);border:1px solid var(--color-border-default);border-radius:12px;padding:8px 12px;font-size:13px;line-height:1.5;white-space:normal}
+.msg.me .mb{background:var(--color-primary-subtle);border-color:transparent}
+.msg.notice{align-self:center;max-width:92%}.msg.notice .mb{background:transparent;border:0;color:var(--color-text-muted);font-size:12px;text-align:center}.msg.notice .mh{text-align:center}
+.msg .tag{color:var(--color-action-primary);font-weight:600}
+.simcomp{padding:10px 12px;border-top:1px solid var(--color-divider-default)}.simcomp textarea{width:100%;height:auto;padding:8px 10px;resize:vertical}
+.simsend{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:6px}
+.simrev{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden}
+.revh{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--color-divider-default)}.revh .grow{flex:1}
+#revList{flex:1;min-height:0;overflow:auto;padding:10px 12px;display:flex;flex-direction:column;gap:10px}
+.rev{border:1px solid var(--color-border-default);border-radius:var(--radius-sm);padding:10px 12px;display:flex;flex-direction:column;gap:6px;font-size:13px}
+.rev .rh{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.rev .rq{color:var(--color-text-secondary)}
+.rev .select{height:32px;width:100%}.rev .rv{display:flex;gap:6px;align-items:center}.rev .rv .select{width:auto}.rev .rv .input{width:70px;height:32px}.rev .rv .grow{flex:1}
+@media (max-width:1300px){.simgrid{grid-template-columns:200px minmax(0,1fr);height:auto}.simrev{grid-column:1/-1;border-top:1px solid var(--color-divider-default)}.simmsgs{height:420px;flex:none}}
+@media (max-width:760px){.simgrid{grid-template-columns:1fr}.simchats{display:flex;overflow:auto;border-right:0;border-bottom:1px solid var(--color-divider-default)}.simchats .chat{min-width:160px}}
+</style>
+</head>
+<body>
+<header class="gnb">
+  <div class="brand">
+    <img class="logo-light" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTUiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCA5NSAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMwLjgzOTggMy4wNjI3NEwzMC44OTkxIDIuNjMyMlYyLjYyOTg1QzMwLjg5OTEgMi42MTQ3NyAzMC45MDI5IDIuNjAwNjQgMzAuOTAyOSAyLjU4NjUxQzMwLjkwMyAyLjQ5NTE2IDMwLjg3MTEgMi40MDY2NSAzMC44MTI4IDIuMzM2MzVDMzAuNzU0NCAyLjI2NjA1IDMwLjY3MzMgMi4yMTg0IDMwLjU4MzUgMi4yMDE2N0wyOS4wMDg4IDEuOTM5M0gyOS4wMDQ2QzI4Ljk3OTYgMS45MzkzIDI4Ljk1MDkgMS45MzQxMSAyOC45MTkzIDEuOTM0MTFDMjguODI2NiAxLjkzNDAyIDI4LjczNjkgMS45NjcyOCAyOC42NjY3IDIuMDI3ODFDMjguNTk2NSAyLjA4ODM1IDI4LjU1MDQgMi4xNzIxMyAyOC41MzY4IDIuMjYzODVMMjguNDY4NSAyLjY4MDI1QzI4LjM0NzUgMy4zOTE1MyAyNy44NDc3IDQuNzM3NzggMjYuODAwMSA0LjczNzc4QzI2LjAzODkgNC43Mzc3OCAyNS4wOTYzIDQuMTY2ODcgMjMuOTA4MyAzLjQ0MzgxQzIzLjQxMTggMy4xNDA0NiAyMi44NTI3IDIuODA0NiAyMi4yNDYgMi40NzI5OUMxOS45OTQ5IDEuMTkwOCAxNy40NjAyIDAgMTQuMjYwOCAwQzkuMzc3OTkgMCA0Ljg2OTYyIDIuNzI4MyAyLjIwMjA5IDcuMjkyMjVDMC43NzI1MzUgOS43MTY1IDAuMDEzMTg0MSAxMi40NzcyIDAuMDAxODMzNDYgMTUuMjkxNUMtMC4wMzQ5MTU3IDE3Ljk2NjMgMC40ODExMzQgMjAuNjE5OSAxLjUxNzY2IDIzLjA4NTlDNC4wMTQyIDI4LjgzMjcgOS4yMzMzOCAzMiAxNi4yMTcxIDMyQzIyLjAzNCAzMiAyNi45MDA0IDI5LjQyNzEgMjkuMjMyNiAyNS4xMTk5QzMwLjM0MDcgMjIuOTg1OCAzMC44OTQ5IDIwLjYwNzYgMzAuODQ0NSAxOC4yMDM2QzMwLjgzMTIgMTcuMTQ0NCAzMC41Nzk4IDE2LjEwMTcgMzAuMTA4NyAxNS4xNTNDMjkuNjM3NiAxNC4yMDQyIDI4Ljk1OSAxMy4zNzM3IDI4LjEyMzIgMTIuNzIyOUMyNi44ODQzIDExLjc0NDcgMjUuNDQ2MyAxMS4wNDkzIDIzLjkxMDIgMTAuNjg1N0MyNS40MDMxIDEwLjQ2NTkgMjYuODA4MSA5Ljg0MzgzIDI3Ljk3NDQgOC44ODYyN0MyOS41MDM0IDcuNTc4MTggMzAuNDY2MiA1LjYxNzIyIDMwLjgzOTggMy4wNjI3NFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zLjk5MjU2IDguOTA2ODVMMi45MDkxNSA3LjcwODk4QzEuNTU2NzcgMTAuMDA4NSAwLjgzNzEzNCAxMi42MjUxIDAuODIzMzY0IDE1LjI5MjhIMS41NzA0NEMxLjUyMjEgMTIuOTMxMSAyLjM5MDE3IDEwLjY0MjQgMy45OTI1NiA4LjkwNjg1WiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzc5XzM1NTg1KSIvPgo8cGF0aCBkPSJNMy43OTk5NiAyMC42NTYzQzMuMDcwOTkgMTkuOTczIDIuNDk1MzMgMTkuMTQyOCAyLjExMTAxIDE4LjIyMDVDMS43MjY2OSAxNy4yOTgyIDEuNTQyNDYgMTYuMzA0OSAxLjU3MDUgMTUuMzA2MlYxNS4yOTNIMC44MjIwMDlDMC43ODgxNjUgMTcuODUzMSAxLjI4MDAzIDIwLjM5MjkgMi4yNjcxOCAyMi43NTUzTDMuNzk5OTYgMjAuNjU2M1oiIGZpbGw9InVybCgjcGFpbnQxX2xpbmVhcl83OV8zNTU4NSkiLz4KPHBhdGggZD0iTTI3LjYwMjMgMTMuMzYxM0wyNi4yMTQxIDE0Ljc5NTdDMjguMTM3OSAxNC44MjMgMjkuMzE5NyAxNi4zMTEgMjkuMjc1OSAxOC4yMDUxSDMwLjAyNDRDMzAuMDExMyAxNy4yNjc1IDI5Ljc4NjcgMTYuMzQ0OSAyOS4zNjczIDE1LjUwNjJDMjguOTQ4IDE0LjY2NzUgMjguMzQ0NiAxMy45MzQzIDI3LjYwMjMgMTMuMzYxM1oiIGZpbGw9InVybCgjcGFpbnQyX2xpbmVhcl83OV8zNTU4NSkiLz4KPHBhdGggZD0iTTMwLjAyNjUgMTguMjAzMUgyOS4yNzhDMjkuMjQxMyAxOS43NjIzIDI4LjQwOCAyMS4wNzE4IDI2LjU1OTIgMjIuMDQ0NUwyOC41MTA3IDI0LjcyOTVDMjkuNTU2NiAyMi43MTYgMzAuMDc3OSAyMC40NzE0IDMwLjAyNjUgMTguMjAzMVoiIGZpbGw9InVybCgjcGFpbnQzX2xpbmVhcl83OV8zNTU4NSkiLz4KPHBhdGggZD0iTTQuNzczMiAxMy4xMTEzQzQuNzE4NTYgMTMuNDA2NSA0LjY5MDk2IDEzLjcwNiA0LjY5MDc3IDE0LjAwNjNDNC42OTA3NyAxOC40NzIyIDguMDE4NyAyMS4zMjM5IDEyLjIyMDkgMjEuMzIzOUMyMC4yMDk4IDIxLjMyMzkgMjIuNTgwNiAxNC43OTY3IDI2LjE1NzcgMTQuNzk2N0gyNi4yMTQyTDI3LjYwMjQgMTMuMzYyOEMyNS44NzcgMTEuOTQyNiAyMy4zMTU5IDExLjA1NDcgMjAuMjA5OCAxMS4wNTQ3QzEzLjg4NTEgMTEuMDU0NyAxMC41MTU3IDE2LjMzNjEgNy42NDU2MyAxNi4zMzYxQzYuMzk2NDIgMTYuMzM2MSA1LjQzODMyIDE0Ljk2MzkgNS40MzgzMiAxMy42MzI3QzUuNDM5MSAxMy40OTggNS40NDcxMSAxMy4zNjM0IDUuNDYyMzQgMTMuMjI5NUw0Ljc3MzIgMTMuMTExM1oiIGZpbGw9InVybCgjcGFpbnQ0X2xpbmVhcl83OV8zNTU4NSkiLz4KPHBhdGggZD0iTTkuNzI0NjIgNi41NTk0NkMxNC4zNDA5IDYuNTU5NDYgMTcuNTQ0IDEwLjA1MjMgMjEuNjY1MiAxMC4wNTIzQzI2LjYwNTUgMTAuMDUyMyAyOS4zMzk0IDcuNjQ2MTYgMzAuMDI2NyAyLjkzOTQ4TDI5LjI3ODIgMi44MTU1OUMyOS4wNyA0LjA2MTk4IDI4LjI1NzkgNS41NTk0MyAyNi44MDE0IDUuNTU5NDNDMjUuNDI4MyA1LjU1OTQzIDIzLjk3MjMgNC4zNTMwOCAyMS44NTI2IDMuMTg4MTlDMTkuNzI5MiAxLjk4MzI1IDE3LjI5NTcgMC44MTgzNTkgMTQuMjU4OSAwLjgxODM1OUM5LjM3MzIyIDAuODE4MzU5IDUuMjUxNTcgMy42OTkyNyAyLjkwNjcxIDcuNzA1OThMMy45OTAxMSA4LjkwMzg1QzQuNzM0NjEgOC4xNDE0IDUuNjI3NzIgNy41Mzk5MiA2LjYxNDEyIDcuMTM2NjZDNy42MDA1MiA2LjczMzM5IDguNjU5MjEgNi41MzY5NCA5LjcyNDYyIDYuNTU5NDZaIiBmaWxsPSJ1cmwoI3BhaW50NV9saW5lYXJfNzlfMzU1ODUpIi8+CjxwYXRoIGQ9Ik0xNC41NTA0IDIzLjk0MjNDMTAuOTc0NyAyMy45NDIzIDYuNDUzNTYgMjMuMTY1NSAzLjc5OTY5IDIwLjY1NjJMMi4yNjY5MSAyMi43NTcxQzQuNDcwOTMgMjcuODI2IDkuMTcxOTYgMzEuMTc3NSAxNi4yMTQ2IDMxLjE3NzVDMjAuODY5OSAzMS4xNzc1IDI2LjAxOTggMjkuMzMyNCAyOC41MDg5IDI0LjczMDNMMjYuNTU3MyAyMi4wNDU0QzI0LjI2NDcgMjMuMjUxNyAyMC40MDM2IDIzLjk0MjMgMTQuNTUwNCAyMy45NDIzWiIgZmlsbD0idXJsKCNwYWludDZfbGluZWFyXzc5XzM1NTg1KSIvPgo8cGF0aCBkPSJNNDIuNzgzMSAyMy45ODE1QzM3LjkwMTEgMjMuOTgxNSAzNS4yMDQ1IDIwLjc3MzkgMzUuMjA0NSAxNi4wMjUzQzM1LjIwNDUgMTEuMjc2OCAzOC4xMjYxIDguMDE5NTMgNDIuODc0NyA4LjAxOTUzQzQ0Ljc3MDMgOC4wMTk1MyA0Ni4zNTMxIDguNDY1NzkgNDcuNTc3NCA5LjE1NjE0TDQ3LjA2NjMgMTIuNDc4MkM0NS45MDY5IDExLjc0MjEgNDQuNTQ1MiAxMS4xNjYyIDQyLjk2MjQgMTEuMTY2MkM0MC4zMDc4IDExLjE2NjIgMzkuMDE4NiAxMy4xMjY2IDM5LjAxODYgMTYuMDAyNEMzOS4wMTg2IDE4Ljg3ODMgNDAuMzU3MyAyMC45MzAzIDQzLjAwODEgMjAuOTMwM0M0My44NTQ5IDIwLjkzMDMgNDQuNDU3NSAyMC43NzM5IDQ1LjA4MyAyMC40MzgyVjE3LjY5NTlINDIuNDA5M0w0MS45NjMxIDE0Ljg2NThINDguNDA4OVYyMi4zNTY3QzQ2LjgwMzIgMjMuNDA1NiA0NC45MDc2IDIzLjk4MTUgNDIuNzkwNyAyMy45ODE1IiBmaWxsPSIjMDA2OUI0Ii8+CjxwYXRoIGQ9Ik01NS43MTI5IDIzLjg3MDlDNTMuNjM4MSAyMy44NzA5IDUxLjkwMjYgMjMuNDI0NyA1MC4zMzg5IDIyLjcxMTVMNTAuODk1NyAxOS40NThDNTIuNDc4NiAyMC4zMDQ4IDU0LjI0MDcgMjAuODg0NSA1NS43Nzc4IDIwLjg4NDVDNTYuODY4NiAyMC44ODQ1IDU3LjYyNzYgMjAuNDE1NCA1Ny42Mjc2IDE5LjUwMzhDNTcuNjI3NiAxOC41OTIyIDU3LjE4MTQgMTguMjI5OSA1NS4wMTg4IDE3LjQwNkM1MS45NDQ2IDE2LjIyMzcgNTAuNjA1OSAxNS4yMjA2IDUwLjYwNTkgMTIuNjgwNEM1MC42MDU5IDkuNzE2ODEgNTIuOTI0OCA4LjEzMzk3IDU1Ljg2NTUgOC4xMzM5N0M1Ny44NzU1IDguMTMzOTcgNTkuMTY4NSA4LjUxNTM4IDYwLjUwMzQgOS4xNTk5Nkw1OS45MjM3IDEyLjM3MTRDNTguNTQzIDExLjU2NjcgNTcuMDkzNiAxMS4xMjQyIDU1LjkxMTMgMTEuMTI0MkM1NC43Mjg5IDExLjEyNDIgNTQuMTk0OSAxMS42MTI0IDU0LjE5NDkgMTIuMzI1N0M1NC4xOTQ5IDEzLjEwMzcgNTQuNjE4MyAxMy40ODUxIDU2LjUzMyAxNC4yMjEzQzU5Ljg4MTcgMTUuNDQ1NiA2MS4yMTY3IDE2LjYwNTEgNjEuMjE2NyAxOS4wNTc1QzYxLjIxNjcgMjIuNDAyNSA1OC43NjQyIDIzLjg3MDkgNTUuNzA5MSAyMy44NzA5IiBmaWxsPSIjMDA2OUI0Ii8+CjxwYXRoIGQ9Ik03OC40NjQgMTguNzk4MlY4LjQwODU5SDc2LjgxMjVWMTIuMTE1OUg3My4zNDkzVjEzLjU5OTZINzYuODEyNVYxOC43OTgySDc4LjQ2NFoiIGZpbGw9IiM5OTk5OTkiLz4KPHBhdGggZD0iTTczLjczMDcgOC43MzY1OUg2Ni4yNTg5VjEwLjIyMDNINzEuNjg2NEM3MC44OTMxIDEzLjMwMjEgNjguNDcxMSAxNC44ODQ5IDY1LjMwNTQgMTUuNjQzOUw2Ni4wOTQ5IDE2LjkxNEM2OS43OTA4IDE1Ljk1NjcgNzMuMjA0NCAxMy43NDgzIDczLjczMDcgOC43MzI3OFY4LjczNjU5WiIgZmlsbD0iIzk5OTk5OSIvPgo8cGF0aCBkPSJNNzAuMDUwMSAxNy44MDY1SDY4LjQwMjRWMjIuNzUzNEM2OC40MDI0IDIzLjE5OTYgNjguNzgzOCAyMy41NzcyIDY5LjIyNjMgMjMuNTc3Mkg3OC42MjhWMjIuMDkzNkg3MC4wNTAxVjE3LjgwMjdWMTcuODA2NVoiIGZpbGw9IiM5OTk5OTkiLz4KPHBhdGggZD0iTTk0LjMwNCAxNS45OTQ4VjguNDA4NTlIOTIuNjU2M1YxMC40NjgySDg5LjE5MzFWMTEuOTUxOUg5Mi42NTYzVjE1Ljk5NDhIOTQuMzA0WiIgZmlsbD0iIzk5OTk5OSIvPgo8cGF0aCBkPSJNODUuNDMyNCAxMi44NzQ5Qzg2LjQwNSAxNC4zNTg2IDg3LjkzODIgMTUuMzUwMiA4OS41ODk3IDE1Ljg0NjFMOTAuMzgzMSAxNC41OTEyQzg4LjEyNTEgMTMuOTQ2NyA4Ni4yOTQzIDEyLjY0NiA4Ni4yOTQzIDkuNzc0MDNWOC41NzI1OUg4NC41NzhWOS43NzQwM0M4NC41NzggMTIuNjQ2IDgyLjc0NzIgMTMuOTQ2NyA4MC40ODkzIDE0LjU5MTJMODEuMjc4OCAxNS44NDYxQzgyLjkyNjUgMTUuMzUwMiA4NC40NTk4IDE0LjM2MjQgODUuNDM2MiAxMi44NzQ5SDg1LjQzMjRaIiBmaWxsPSIjOTk5OTk5Ii8+CjxwYXRoIGQ9Ik05NC4zMDQgMjAuNzI0M1YxNi42NTA5SDgzLjk5NDVWMTguMDg1SDkyLjY1NjNWMTkuMzcwM0g4NC4wNzg0VjIyLjc1MzRDODQuMDc4NCAyMy4xOTk3IDg0LjQ1NiAyMy41NzczIDg0LjkwMjIgMjMuNTc3M0g5NC4zODQxVjIyLjE0MzJIODUuNzI2MVYyMC43MjQzSDk0LjMwNFoiIGZpbGw9IiM5OTk5OTkiLz4KPGRlZnM+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQwX2xpbmVhcl83OV8zNTU4NSIgeDE9IjQuNDI2NzQiIHkxPSI5LjMxNjc2IiB4Mj0iLTAuNjIzMDY0IiB5Mj0iMTAuMTk4MyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRkJCMDAwIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI0M4QjkwMCIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50MV9saW5lYXJfNzlfMzU1ODUiIHgxPSItMC4xMjcxMzQiIHkxPSIxNi45Nzk0IiB4Mj0iNC4xNzA3NiIgeTI9IjE3LjY2NCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjQzhCOTAwIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzdEQjAxQiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50Ml9saW5lYXJfNzlfMzU1ODUiIHgxPSIyNi44MzUyIiB5MT0iMTQuMTUwOSIgeDI9IjMwLjYxODYiIHkyPSIxNi40OTUzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiM2NUMxRUUiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDBBMkI2Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQzX2xpbmVhcl83OV8zNTU4NSIgeDE9IjMwLjcxMzgiIHkxPSIxOS42NTIiIHgyPSIyNi44MzI0IiB5Mj0iMjAuNzQ3NiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjMDBBMkI2Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwOEQ4NSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50NF9saW5lYXJfNzlfMzU1ODUiIHgxPSI2LjI5NDU4IiB5MT0iMTYuMTg5MyIgeDI9IjI2LjE1OSIgeTI9IjE2LjE4OTMiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzAwNThBNiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM2NUMxRUUiLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDVfbGluZWFyXzc5XzM1NTg1IiB4MT0iMi45MDY3MSIgeTE9IjUuNDM1MzEiIHgyPSIzMC4wMjY3IiB5Mj0iNS40MzUzMSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjRkJCMDAwIi8+CjxzdG9wIG9mZnNldD0iMC42NjYiIHN0b3AtY29sb3I9IiNFQTY4MEMiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRTM0OTEyIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQ2X2xpbmVhcl83OV8zNTU4NSIgeDE9IjMuNzg4OTQiIHkxPSIyNS45MTY5IiB4Mj0iMjYuNTY2OSIgeTI9IjI1LjkxNjkiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzdEQjAxQiIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMDhEODUiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8L3N2Zz4K" alt="GS건설">
+    <img class="logo-dark" src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOTUiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCA5NSAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMwLjgzOTggMy4wNjI3NEwzMC44OTkxIDIuNjMyMlYyLjYyOTg1QzMwLjg5OTEgMi42MTQ3NyAzMC45MDI5IDIuNjAwNjQgMzAuOTAyOSAyLjU4NjUxQzMwLjkwMyAyLjQ5NTE2IDMwLjg3MTEgMi40MDY2NSAzMC44MTI4IDIuMzM2MzVDMzAuNzU0NCAyLjI2NjA1IDMwLjY3MzMgMi4yMTg0IDMwLjU4MzUgMi4yMDE2N0wyOS4wMDg4IDEuOTM5M0gyOS4wMDQ2QzI4Ljk3OTYgMS45MzkzIDI4Ljk1MDkgMS45MzQxMSAyOC45MTkzIDEuOTM0MTFDMjguODI2NiAxLjkzNDAyIDI4LjczNjkgMS45NjcyOCAyOC42NjY3IDIuMDI3ODFDMjguNTk2NSAyLjA4ODM1IDI4LjU1MDQgMi4xNzIxMyAyOC41MzY4IDIuMjYzODVMMjguNDY4NSAyLjY4MDI1QzI4LjM0NzUgMy4zOTE1MyAyNy44NDc3IDQuNzM3NzggMjYuODAwMSA0LjczNzc4QzI2LjAzODkgNC43Mzc3OCAyNS4wOTYzIDQuMTY2ODcgMjMuOTA4MyAzLjQ0MzgxQzIzLjQxMTggMy4xNDA0NiAyMi44NTI3IDIuODA0NiAyMi4yNDYgMi40NzI5OUMxOS45OTQ5IDEuMTkwOCAxNy40NjAyIDAgMTQuMjYwOCAwQzkuMzc3OTkgMCA0Ljg2OTYyIDIuNzI4MyAyLjIwMjA5IDcuMjkyMjVDMC43NzI1MzUgOS43MTY1IDAuMDEzMTg0MSAxMi40NzcyIDAuMDAxODMzNDYgMTUuMjkxNUMtMC4wMzQ5MTU3IDE3Ljk2NjMgMC40ODExMzQgMjAuNjE5OSAxLjUxNzY2IDIzLjA4NTlDNC4wMTQyIDI4LjgzMjcgOS4yMzMzOCAzMiAxNi4yMTcxIDMyQzIyLjAzNCAzMiAyNi45MDA0IDI5LjQyNzEgMjkuMjMyNiAyNS4xMTk5QzMwLjM0MDcgMjIuOTg1OCAzMC44OTQ5IDIwLjYwNzYgMzAuODQ0NSAxOC4yMDM2QzMwLjgzMTIgMTcuMTQ0NCAzMC41Nzk4IDE2LjEwMTcgMzAuMTA4NyAxNS4xNTNDMjkuNjM3NiAxNC4yMDQyIDI4Ljk1OSAxMy4zNzM3IDI4LjEyMzIgMTIuNzIyOUMyNi44ODQzIDExLjc0NDcgMjUuNDQ2MyAxMS4wNDkzIDIzLjkxMDIgMTAuNjg1N0MyNS40MDMxIDEwLjQ2NTkgMjYuODA4MSA5Ljg0MzgzIDI3Ljk3NDQgOC44ODYyN0MyOS41MDM0IDcuNTc4MTggMzAuNDY2MiA1LjYxNzIyIDMwLjgzOTggMy4wNjI3NFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zLjk5MjU2IDguOTA2ODVMMi45MDkxNSA3LjcwODk4QzEuNTU2NzcgMTAuMDA4NSAwLjgzNzEzNCAxMi42MjUxIDAuODIzMzY0IDE1LjI5MjhIMS41NzA0NEMxLjUyMjEgMTIuOTMxMSAyLjM5MDE3IDEwLjY0MjQgMy45OTI1NiA4LjkwNjg1WiIgZmlsbD0idXJsKCNwYWludDBfbGluZWFyXzc5XzM1NTc5KSIvPgo8cGF0aCBkPSJNMy43OTk5NiAyMC42NTYzQzMuMDcwOTkgMTkuOTczIDIuNDk1MzMgMTkuMTQyOCAyLjExMTAxIDE4LjIyMDVDMS43MjY2OSAxNy4yOTgyIDEuNTQyNDYgMTYuMzA0OSAxLjU3MDUgMTUuMzA2MlYxNS4yOTNIMC44MjIwMDlDMC43ODgxNjUgMTcuODUzMSAxLjI4MDAzIDIwLjM5MjkgMi4yNjcxOCAyMi43NTUzTDMuNzk5OTYgMjAuNjU2M1oiIGZpbGw9InVybCgjcGFpbnQxX2xpbmVhcl83OV8zNTU3OSkiLz4KPHBhdGggZD0iTTI3LjYwMjMgMTMuMzYxM0wyNi4yMTQxIDE0Ljc5NTdDMjguMTM3OSAxNC44MjMgMjkuMzE5NyAxNi4zMTEgMjkuMjc1OSAxOC4yMDUxSDMwLjAyNDRDMzAuMDExMyAxNy4yNjc1IDI5Ljc4NjcgMTYuMzQ0OSAyOS4zNjczIDE1LjUwNjJDMjguOTQ4IDE0LjY2NzUgMjguMzQ0NiAxMy45MzQzIDI3LjYwMjMgMTMuMzYxM1oiIGZpbGw9InVybCgjcGFpbnQyX2xpbmVhcl83OV8zNTU3OSkiLz4KPHBhdGggZD0iTTMwLjAyNjUgMTguMjAzMUgyOS4yNzhDMjkuMjQxMyAxOS43NjIzIDI4LjQwOCAyMS4wNzE4IDI2LjU1OTIgMjIuMDQ0NUwyOC41MTA3IDI0LjcyOTVDMjkuNTU2NiAyMi43MTYgMzAuMDc3OSAyMC40NzE0IDMwLjAyNjUgMTguMjAzMVoiIGZpbGw9InVybCgjcGFpbnQzX2xpbmVhcl83OV8zNTU3OSkiLz4KPHBhdGggZD0iTTQuNzczMiAxMy4xMTEzQzQuNzE4NTYgMTMuNDA2NSA0LjY5MDk2IDEzLjcwNiA0LjY5MDc3IDE0LjAwNjNDNC42OTA3NyAxOC40NzIyIDguMDE4NyAyMS4zMjM5IDEyLjIyMDkgMjEuMzIzOUMyMC4yMDk4IDIxLjMyMzkgMjIuNTgwNiAxNC43OTY3IDI2LjE1NzcgMTQuNzk2N0gyNi4yMTQyTDI3LjYwMjQgMTMuMzYyOEMyNS44NzcgMTEuOTQyNiAyMy4zMTU5IDExLjA1NDcgMjAuMjA5OCAxMS4wNTQ3QzEzLjg4NTEgMTEuMDU0NyAxMC41MTU3IDE2LjMzNjEgNy42NDU2MyAxNi4zMzYxQzYuMzk2NDIgMTYuMzM2MSA1LjQzODMyIDE0Ljk2MzkgNS40MzgzMiAxMy42MzI3QzUuNDM5MSAxMy40OTggNS40NDcxMSAxMy4zNjM0IDUuNDYyMzQgMTMuMjI5NUw0Ljc3MzIgMTMuMTExM1oiIGZpbGw9InVybCgjcGFpbnQ0X2xpbmVhcl83OV8zNTU3OSkiLz4KPHBhdGggZD0iTTkuNzI0NjIgNi41NTk0NkMxNC4zNDA5IDYuNTU5NDYgMTcuNTQ0IDEwLjA1MjMgMjEuNjY1MiAxMC4wNTIzQzI2LjYwNTUgMTAuMDUyMyAyOS4zMzk0IDcuNjQ2MTYgMzAuMDI2NyAyLjkzOTQ4TDI5LjI3ODIgMi44MTU1OUMyOS4wNyA0LjA2MTk4IDI4LjI1NzkgNS41NTk0MyAyNi44MDE0IDUuNTU5NDNDMjUuNDI4MyA1LjU1OTQzIDIzLjk3MjMgNC4zNTMwOCAyMS44NTI2IDMuMTg4MTlDMTkuNzI5MiAxLjk4MzI1IDE3LjI5NTcgMC44MTgzNTkgMTQuMjU4OSAwLjgxODM1OUM5LjM3MzIyIDAuODE4MzU5IDUuMjUxNTcgMy42OTkyNyAyLjkwNjcxIDcuNzA1OThMMy45OTAxMSA4LjkwMzg1QzQuNzM0NjEgOC4xNDE0IDUuNjI3NzIgNy41Mzk5MiA2LjYxNDEyIDcuMTM2NjZDNy42MDA1MiA2LjczMzM5IDguNjU5MjEgNi41MzY5NCA5LjcyNDYyIDYuNTU5NDZaIiBmaWxsPSJ1cmwoI3BhaW50NV9saW5lYXJfNzlfMzU1NzkpIi8+CjxwYXRoIGQ9Ik0xNC41NTA0IDIzLjk0MjNDMTAuOTc0NyAyMy45NDIzIDYuNDUzNTYgMjMuMTY1NSAzLjc5OTY5IDIwLjY1NjJMMi4yNjY5MSAyMi43NTcxQzQuNDcwOTMgMjcuODI2IDkuMTcxOTYgMzEuMTc3NSAxNi4yMTQ2IDMxLjE3NzVDMjAuODY5OSAzMS4xNzc1IDI2LjAxOTggMjkuMzMyNCAyOC41MDg5IDI0LjczMDNMMjYuNTU3MyAyMi4wNDU0QzI0LjI2NDcgMjMuMjUxNyAyMC40MDM2IDIzLjk0MjMgMTQuNTUwNCAyMy45NDIzWiIgZmlsbD0idXJsKCNwYWludDZfbGluZWFyXzc5XzM1NTc5KSIvPgo8cGF0aCBkPSJNNDIuNzgzMSAyMy45ODE1QzM3LjkwMTEgMjMuOTgxNSAzNS4yMDQ1IDIwLjc3MzkgMzUuMjA0NSAxNi4wMjUzQzM1LjIwNDUgMTEuMjc2OCAzOC4xMjYxIDguMDE5NTMgNDIuODc0NyA4LjAxOTUzQzQ0Ljc3MDMgOC4wMTk1MyA0Ni4zNTMxIDguNDY1NzkgNDcuNTc3NCA5LjE1NjE0TDQ3LjA2NjMgMTIuNDc4MkM0NS45MDY5IDExLjc0MjEgNDQuNTQ1MiAxMS4xNjYyIDQyLjk2MjQgMTEuMTY2MkM0MC4zMDc4IDExLjE2NjIgMzkuMDE4NiAxMy4xMjY2IDM5LjAxODYgMTYuMDAyNEMzOS4wMTg2IDE4Ljg3ODMgNDAuMzU3MyAyMC45MzAzIDQzLjAwODEgMjAuOTMwM0M0My44NTQ5IDIwLjkzMDMgNDQuNDU3NSAyMC43NzM5IDQ1LjA4MyAyMC40MzgyVjE3LjY5NTlINDIuNDA5M0w0MS45NjMxIDE0Ljg2NThINDguNDA4OVYyMi4zNTY3QzQ2LjgwMzIgMjMuNDA1NiA0NC45MDc2IDIzLjk4MTUgNDIuNzkwNyAyMy45ODE1IiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNTUuNzEyOSAyMy44NzA5QzUzLjYzODEgMjMuODcwOSA1MS45MDI2IDIzLjQyNDcgNTAuMzM4OSAyMi43MTE1TDUwLjg5NTcgMTkuNDU4QzUyLjQ3ODYgMjAuMzA0OCA1NC4yNDA3IDIwLjg4NDUgNTUuNzc3OCAyMC44ODQ1QzU2Ljg2ODYgMjAuODg0NSA1Ny42Mjc2IDIwLjQxNTQgNTcuNjI3NiAxOS41MDM4QzU3LjYyNzYgMTguNTkyMiA1Ny4xODE0IDE4LjIyOTkgNTUuMDE4OCAxNy40MDZDNTEuOTQ0NiAxNi4yMjM3IDUwLjYwNTkgMTUuMjIwNiA1MC42MDU5IDEyLjY4MDRDNTAuNjA1OSA5LjcxNjgxIDUyLjkyNDggOC4xMzM5NyA1NS44NjU1IDguMTMzOTdDNTcuODc1NSA4LjEzMzk3IDU5LjE2ODUgOC41MTUzOCA2MC41MDM0IDkuMTU5OTZMNTkuOTIzNyAxMi4zNzE0QzU4LjU0MyAxMS41NjY3IDU3LjA5MzYgMTEuMTI0MiA1NS45MTEzIDExLjEyNDJDNTQuNzI4OSAxMS4xMjQyIDU0LjE5NDkgMTEuNjEyNCA1NC4xOTQ5IDEyLjMyNTdDNTQuMTk0OSAxMy4xMDM3IDU0LjYxODMgMTMuNDg1MSA1Ni41MzMgMTQuMjIxM0M1OS44ODE3IDE1LjQ0NTYgNjEuMjE2NyAxNi42MDUxIDYxLjIxNjcgMTkuMDU3NUM2MS4yMTY3IDIyLjQwMjUgNTguNzY0MiAyMy44NzA5IDU1LjcwOTEgMjMuODcwOSIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTc4LjQ2NCAxOC43OTgyVjguNDA4NTlINzYuODEyNVYxMi4xMTU5SDczLjM0OTNWMTMuNTk5Nkg3Ni44MTI1VjE4Ljc5ODJINzguNDY0WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTczLjczMDcgOC43MzY1OUg2Ni4yNTg5VjEwLjIyMDNINzEuNjg2NEM3MC44OTMxIDEzLjMwMjEgNjguNDcxMSAxNC44ODQ5IDY1LjMwNTQgMTUuNjQzOUw2Ni4wOTQ5IDE2LjkxNEM2OS43OTA4IDE1Ljk1NjcgNzMuMjA0NCAxMy43NDgzIDczLjczMDcgOC43MzI3OFY4LjczNjU5WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTcwLjA1MDEgMTcuODA2NUg2OC40MDI0VjIyLjc1MzRDNjguNDAyNCAyMy4xOTk2IDY4Ljc4MzggMjMuNTc3MiA2OS4yMjYzIDIzLjU3NzJINzguNjI4VjIyLjA5MzZINzAuMDUwMVYxNy44MDI3VjE3LjgwNjVaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNOTQuMzA0IDE1Ljk5NDhWOC40MDg1OUg5Mi42NTYzVjEwLjQ2ODJIODkuMTkzMVYxMS45NTE5SDkyLjY1NjNWMTUuOTk0OEg5NC4zMDRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNODUuNDMyNCAxMi44NzQ5Qzg2LjQwNSAxNC4zNTg2IDg3LjkzODIgMTUuMzUwMiA4OS41ODk3IDE1Ljg0NjFMOTAuMzgzMSAxNC41OTEyQzg4LjEyNTEgMTMuOTQ2NyA4Ni4yOTQzIDEyLjY0NiA4Ni4yOTQzIDkuNzc0MDNWOC41NzI1OUg4NC41NzhWOS43NzQwM0M4NC41NzggMTIuNjQ2IDgyLjc0NzIgMTMuOTQ2NyA4MC40ODkzIDE0LjU5MTJMODEuMjc4OCAxNS44NDYxQzgyLjkyNjUgMTUuMzUwMiA4NC40NTk4IDE0LjM2MjQgODUuNDM2MiAxMi44NzQ5SDg1LjQzMjRaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNOTQuMzA0IDIwLjcyNDNWMTYuNjUwOUg4My45OTQ1VjE4LjA4NUg5Mi42NTYzVjE5LjM3MDNIODQuMDc4NFYyMi43NTM0Qzg0LjA3ODQgMjMuMTk5NyA4NC40NTYgMjMuNTc3MyA4NC45MDIyIDIzLjU3NzNIOTQuMzg0MVYyMi4xNDMySDg1LjcyNjFWMjAuNzI0M0g5NC4zMDRaIiBmaWxsPSJ3aGl0ZSIvPgo8ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDBfbGluZWFyXzc5XzM1NTc5IiB4MT0iNC40MjY3NCIgeTE9IjkuMzE2NzYiIHgyPSItMC42MjMwNjQiIHkyPSIxMC4xOTgzIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGQkIwMDAiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjQzhCOTAwIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQxX2xpbmVhcl83OV8zNTU3OSIgeDE9Ii0wLjEyNzEzNCIgeTE9IjE2Ljk3OTQiIHgyPSI0LjE3MDc2IiB5Mj0iMTcuNjY0IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNDOEI5MDAiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjN0RCMDFCIi8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQyX2xpbmVhcl83OV8zNTU3OSIgeDE9IjI2LjgzNTIiIHkxPSIxNC4xNTA5IiB4Mj0iMzAuNjE4NiIgeTI9IjE2LjQ5NTMiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KPHN0b3Agc3RvcC1jb2xvcj0iIzY1QzFFRSIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwMEEyQjYiLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDNfbGluZWFyXzc5XzM1NTc5IiB4MT0iMzAuNzEzOCIgeTE9IjE5LjY1MiIgeDI9IjI2LjgzMjQiIHkyPSIyMC43NDc2IiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiMwMEEyQjYiLz4KPHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMDA4RDg1Ii8+CjwvbGluZWFyR3JhZGllbnQ+CjxsaW5lYXJHcmFkaWVudCBpZD0icGFpbnQ0X2xpbmVhcl83OV8zNTU3OSIgeDE9IjYuMjk0NTgiIHkxPSIxNi4xODkzIiB4Mj0iMjYuMTU5IiB5Mj0iMTYuMTg5MyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjMDA1OEE2Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzY1QzFFRSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9InBhaW50NV9saW5lYXJfNzlfMzU1NzkiIHgxPSIyLjkwNjcxIiB5MT0iNS40MzUzMSIgeDI9IjMwLjAyNjciIHkyPSI1LjQzNTMxIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGQkIwMDAiLz4KPHN0b3Agb2Zmc2V0PSIwLjY2NiIgc3RvcC1jb2xvcj0iI0VBNjgwQyIvPgo8c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNFMzQ5MTIiLz4KPC9saW5lYXJHcmFkaWVudD4KPGxpbmVhckdyYWRpZW50IGlkPSJwYWludDZfbGluZWFyXzc5XzM1NTc5IiB4MT0iMy43ODg5NCIgeTE9IjI1LjkxNjkiIHgyPSIyNi41NjY5IiB5Mj0iMjUuOTE2OSIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjN0RCMDFCIi8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwOEQ4NSIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjwvc3ZnPgo=" alt="GS건설">
+    <span class="divider" aria-hidden="true"></span>
+    <span class="svc">LLRN CP1B 4D 공정관리</span>
+  </div>
+  <div class="meta">
+    <span class="badge primary" id="schedBadge">General Schedule re3</span>
+    <span class="badge">Sucat – Alabang · STA 4+160 ~ 8+525.53</span>
+  </div>
+  <div class="util">
+    <button class="icon-btn" id="themeBtn" aria-label="화면 테마 전환" title="화면 테마 전환"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 6.00098C9 10.9715 13.0294 15.001 18 15.001C18.9093 15.001 19.787 14.8665 20.6144 14.6157C19.4943 18.3113 16.0613 21.0008 12 21.0008C7.02944 21.0008 3 16.9717 3 12.0011C3 7.93981 5.69007 4.50681 9.38561 3.38672C9.13484 4.21409 9 5.09172 9 6.00098Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button class="icon-btn" id="helpBtn" aria-label="조작 도움말" title="조작 도움말"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.999 16.5V16.5396M9.75 9.22999C9.75 7.96388 10.7574 6.9375 12 6.9375C13.2426 6.9375 14.25 7.96388 14.25 9.22999C14.25 10.4961 13.2426 11.5225 12 11.5225C12 11.5225 12 13.1559 12 14M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</header>
+
+<nav class="sidenav" aria-label="주 메뉴">
+  <div class="nav-section">
+    <div class="nav-title">공정 모니터링</div>
+    <button class="nav-item" data-go="sec-viewer" aria-current="true"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 6V21M9 18L15 21L21 18V3L15 6M9 18L3 21V6L9 3L15 6M9 18V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>4D 조감도</button>
+    <button class="nav-item" data-go="sec-kpi"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 11V20M9 11H4.59961C4.03956 11 3.75981 11 3.5459 11.109C3.35774 11.2049 3.20487 11.3577 3.10899 11.5459C3 11.7598 3 12.04 3 12.6001V20H9M9 11V5.6001C9 5.04004 9 4.75981 9.10899 4.5459C9.20487 4.35774 9.35774 4.20487 9.5459 4.10899C9.75981 4 10.0396 4 10.5996 4H13.3996C13.9597 4 14.2403 4 14.4542 4.10899C14.6423 4.20487 14.7948 4.35774 14.8906 4.5459C14.9996 4.75981 15 5.04005 15 5.6001V8M9 20H15M15 20L21 20.0001V9.6001C21 9.04005 20.9996 8.75981 20.8906 8.5459C20.7948 8.35774 20.6429 8.20487 20.4548 8.10899C20.2409 8 19.9601 8 19.4 8H15M15 20V8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>공정 현황</button>
+    <button class="nav-item" data-go="sec-prof"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 15.0002V16.8C3 17.9201 3 18.4798 3.21799 18.9076C3.40973 19.2839 3.71547 19.5905 4.0918 19.7822C4.5192 20 5.07899 20 6.19691 20H21.0002M3 15.0002V5M3 15.0002L6.8534 11.7891L6.85658 11.7865C7.55366 11.2056 7.90288 10.9146 8.28154 10.7964C8.72887 10.6567 9.21071 10.6788 9.64355 10.8584C10.0105 11.0106 10.3323 11.3324 10.9758 11.9759L10.9822 11.9823C11.6357 12.6358 11.9633 12.9635 12.3362 13.1153C12.7774 13.2951 13.2685 13.3106 13.7207 13.1606C14.1041 13.0334 14.4542 12.7275 15.1543 12.115L21 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>종단면도</button>
+    <button class="nav-item" data-go="sec-gantt"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8H20M4 8V16.8002C4 17.9203 4 18.4801 4.21799 18.9079C4.40973 19.2842 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H16.8031C17.921 20 18.48 20 18.9074 19.7822C19.2837 19.5905 19.5905 19.2842 19.7822 18.9079C20 18.4805 20 17.9215 20 16.8036V8M4 8V7.2002C4 6.08009 4 5.51962 4.21799 5.0918C4.40973 4.71547 4.71547 4.40973 5.0918 4.21799C5.51962 4 6.08009 4 7.2002 4H8M20 8V7.19691C20 6.07899 20 5.5192 19.7822 5.0918C19.5905 4.71547 19.2837 4.40973 18.9074 4.21799C18.4796 4 17.9203 4 16.8002 4H16M16 2V4M16 4H8M8 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>공정표</button>
+  </div>
+  <div class="nav-section">
+    <div class="nav-title">실적 관리</div>
+    <button class="nav-item" data-go="sec-prog"><svg class="ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M4 19h16M6 16l4-5 3 3 5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>실적 현황 · S-curve</button>
+    <button class="nav-item" data-go="sec-sim"><svg class="ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-5 4V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>가상 현장 · 메신저 (시험)</button>
+    <button class="nav-item" data-go="sec-act"><svg class="ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M4 20h4l10-10-4-4L4 16v4zM13.5 6.5l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>실적 입력 · 데이터 파일</button>
+  </div>
+  <div class="nav-section">
+    <div class="nav-title">공정표 관리</div>
+    <button class="nav-item" data-go="sec-base"><svg class="ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M12 4l8 4-8 4-8-4 8-4zM4 12l8 4 8-4M4 16l8 4 8-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>기준선 (Revision)</button>
+    <button class="nav-item" id="openImport"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18V12M15 14L12 12L9 14M13 3.00087C12.9045 3 12.7973 3 12.6747 3H8.2002C7.08009 3 6.51962 3 6.0918 3.21799C5.71547 3.40973 5.40973 3.71547 5.21799 4.0918C5 4.51962 5 5.08009 5 6.2002V17.8002C5 18.9203 5 19.4801 5.21799 19.9079C5.40973 20.2842 5.71547 20.5905 6.0918 20.7822C6.51921 21 7.079 21 8.19694 21L15.8031 21C16.921 21 17.48 21 17.9074 20.7822C18.2837 20.5905 18.5905 20.2842 18.7822 19.9079C19 19.4805 19 18.9215 19 17.8036V9.32568C19 9.20296 19 9.09561 18.9991 9M13 3.00087C13.2856 3.00347 13.4663 3.01385 13.6388 3.05526C13.8429 3.10425 14.0379 3.18526 14.2168 3.29492C14.4186 3.41857 14.5918 3.59182 14.9375 3.9375L18.063 7.06298C18.4089 7.40889 18.5809 7.58136 18.7046 7.78319C18.8142 7.96214 18.8953 8.15726 18.9443 8.36133C18.9857 8.53376 18.9963 8.71451 18.9991 9M13 3.00087V5.8C13 6.9201 13 7.47977 13.218 7.90759C13.4097 8.28392 13.7155 8.59048 14.0918 8.78223C14.5192 9 15.079 9 16.1969 9H18.9991M18.9991 9H19.0002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>공정표 불러오기</button>
+    <button class="nav-item" data-go="sec-cp"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.12132 15.8787C7.57843 15.3358 6.82843 15 6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21C7.65685 21 9 19.6569 9 18C9 17.1716 8.66421 16.4216 8.12132 15.8787ZM8.12132 15.8787L15.8787 8.12132M15.8787 8.12132C16.4216 8.66421 17.1716 9 18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 6.82843 15.3358 7.57843 15.8787 8.12132ZM15.8787 8.12132L15.8828 8.11719" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>주공정 (Critical Path)</button>
+    <button class="nav-item" data-go="sec-contract"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 21V15.6871M4 15.6871C9.81818 11.1377 14.1818 20.2363 20 15.6869V4.31347C14.1818 8.86284 9.81818 -0.236103 4 4.31327V15.6871Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>공기 현황</button>
+  </div>
+  <div class="nav-section">
+    <div class="nav-title">시점</div>
+    <button class="nav-item" id="viewsToggle" aria-expanded="true"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.0225 3.25684C15.2477 3.28634 15.4497 3.41643 15.5684 3.61426L16.9248 5.87988H18.75C20.3882 5.87988 21.75 7.17915 21.75 8.82227V17.8086C21.7498 19.4515 20.3881 20.75 18.75 20.75H5.25C3.61193 20.75 2.25021 19.4515 2.25 17.8086V8.82227C2.25 7.17915 3.6118 5.87988 5.25 5.87988H7.0752L8.43164 3.61426L8.4873 3.53418C8.62842 3.35609 8.84445 3.25 9.0752 3.25H14.9248L15.0225 3.25684ZM8.14355 7.01562L8.08789 7.0957C7.94678 7.27394 7.73085 7.37988 7.5 7.37988H5.25C4.40292 7.37988 3.75 8.04441 3.75 8.82227V17.8086C3.75021 18.5863 4.40305 19.25 5.25 19.25H18.75C19.597 19.25 20.2498 18.5863 20.25 17.8086V8.82227C20.25 8.0444 19.5971 7.37988 18.75 7.37988H16.5C16.2691 7.37988 16.0532 7.27394 15.9121 7.0957L15.8564 7.01562L14.499 4.75H9.50098L8.14355 7.01562ZM12 8.72949C14.2595 8.72949 16.125 10.5192 16.125 12.7676C16.1247 15.0157 14.2594 16.8047 12 16.8047C9.74063 16.8047 7.87525 15.0157 7.875 12.7676C7.875 10.5192 9.74048 8.72949 12 8.72949ZM12 10.2295C10.5316 10.2295 9.375 11.3845 9.375 12.7676C9.37525 14.1505 10.5318 15.3047 12 15.3047C13.4682 15.3047 14.6247 14.1505 14.625 12.7676C14.625 11.3845 13.4684 10.2295 12 10.2295Z" fill="currentColor"/></svg>시점 프리셋<span class="caret"><svg class="ic sm" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 9L12 16L5 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>
+    <div id="viewList">
+      <button class="nav-item d2" data-view="v-ic">Sucat IC 조감</button>
+      <button class="nav-item d2" data-view="v-loop">램프 루프</button>
+      <button class="nav-item d2" data-view="v-pier">교각 근접</button>
+      <button class="nav-item d2" data-view="v-br2">BR2 고가교</button>
+      <button class="nav-item d2" data-view="v-alab">Alabang IC</button>
+      <button class="nav-item d2" data-view="v-all">전체</button>
+      <button class="nav-item d2" data-view="v-top">평면</button>
+    </div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-title">정보</div>
+    <button class="nav-item" data-go="sec-basis"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 17H15M9 14H15M13.0004 3.00087C12.9048 3 12.7974 3 12.6747 3H8.2002C7.08009 3 6.51962 3 6.0918 3.21799C5.71547 3.40973 5.40973 3.71547 5.21799 4.0918C5 4.51962 5 5.08009 5 6.2002V17.8002C5 18.9203 5 19.4801 5.21799 19.9079C5.40973 20.2842 5.71547 20.5905 6.0918 20.7822C6.51921 21 7.079 21 8.19694 21L15.8031 21C16.921 21 17.48 21 17.9074 20.7822C18.2837 20.5905 18.5905 20.2842 18.7822 19.9079C19 19.4805 19 18.9215 19 17.8036V9.32568C19 9.20302 18.9999 9.09553 18.999 9M13.0004 3.00087C13.2858 3.00348 13.4657 3.01407 13.6382 3.05547C13.8423 3.10446 14.0379 3.18526 14.2168 3.29492C14.4186 3.41857 14.5918 3.59181 14.9375 3.9375L18.063 7.06298C18.4089 7.40889 18.5809 7.58136 18.7046 7.78319C18.8142 7.96214 18.8953 8.15726 18.9443 8.36133C18.9857 8.53379 18.9964 8.71454 18.999 9M13.0004 3.00087L13 5.80021C13 6.92031 13 7.48015 13.218 7.90797C13.4097 8.2843 13.7155 8.59048 14.0918 8.78223C14.5192 9 15.079 9 16.1969 9H18.999" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>모델링·공정 연동 기준</button>
+  </div>
+</nav>
+
+<main class="content" id="content">
+  <div class="page">
+    <div class="page-head">
+      <div><h1>Sucat IC · BR2 · Alabang IC 4D 공정 조감도</h1><p id="schedDesc">General Schedule of LLRN Project (re3) 기준 계획 공정을 위성지도 위 3D 모델로 재생합니다.</p></div>
+      <div class="asof"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8H20M4 8V16.8002C4 17.9203 4 18.4801 4.21799 18.9079C4.40973 19.2842 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H16.8031C17.921 20 18.48 20 18.9074 19.7822C19.2837 19.5905 19.5905 19.2842 19.7822 18.9079C20 18.4805 20 17.9215 20 16.8036V8M4 8V7.2002C4 6.08009 4 5.51962 4.21799 5.0918C4.40973 4.71547 4.71547 4.40973 5.0918 4.21799C5.51962 4 6.08009 4 7.2002 4H8M20 8V7.19691C20 6.07899 20 5.5192 19.7822 5.0918C19.5905 4.71547 19.2837 4.40973 18.9074 4.21799C18.4796 4 17.9203 4 16.8002 4H16M16 2V4M16 4H8M8 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>기준일</span><span class="val" id="asofDate">–</span></div>
+    </div>
+    <section class="card cstrip" id="sec-contract" aria-label="공기 현황">
+      <div class="c"><span class="l">착공일</span><span class="v" id="cStart">–</span><span class="s" id="cStartSrc">공정표 착공 마일스톤</span>
+        <input class="input cedit" type="date" id="cStartIn" aria-label="착공일" hidden></div>
+      <div class="c"><span class="l">계약 공기</span><span class="v" id="cMonths">–</span><span class="s" id="cMonthsSub">착공일부터</span>
+        <input class="input cedit" type="number" min="1" max="120" id="cMonthsIn" aria-label="계약 공기(개월)" hidden></div>
+      <div class="c"><span class="l">계약 준공일</span><span class="v" id="cEnd">–</span><span class="s">착공일 + 계약 공기</span></div>
+      <div class="c"><span class="l">계획 준공일 (공정표)</span><span class="v" id="cPlan">–</span><span class="s" id="cPlanSub">–</span></div>
+      <div class="c"><span class="l">공기 여유</span><span class="v" id="cFloat">–</span><span class="s" id="cFloatSub">–</span></div>
+      <div class="act"><button class="icon-btn" id="cEdit" aria-label="착공일·계약 공기 수정" title="착공일·계약 공기 수정"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 8.00012L4 16.0001V20.0001L8 20.0001L16 12.0001M12 8.00012L14.8686 5.13146L14.8704 5.12976C15.2652 4.73488 15.463 4.53709 15.691 4.46301C15.8919 4.39775 16.1082 4.39775 16.3091 4.46301C16.5369 4.53704 16.7345 4.7346 17.1288 5.12892L18.8686 6.86872C19.2646 7.26474 19.4627 7.46284 19.5369 7.69117C19.6022 7.89201 19.6021 8.10835 19.5369 8.3092C19.4628 8.53736 19.265 8.73516 18.8695 9.13061L18.8686 9.13146L16 12.0001M12 8.00012L16 12.0001" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
+    </section>
+    <div class="alert" id="schedAlert" hidden><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 9.00006V13.0001M4.37891 15.1999C3.46947 16.775 3.01489 17.5629 3.08281 18.2092C3.14206 18.7729 3.43792 19.2851 3.89648 19.6182C4.42204 20.0001 5.3309 20.0001 7.14853 20.0001H16.8515C18.6691 20.0001 19.5778 20.0001 20.1034 19.6182C20.5619 19.2851 20.8579 18.7729 20.9172 18.2092C20.9851 17.5629 20.5307 16.775 19.6212 15.1999L14.7715 6.79986C13.8621 5.22468 13.4071 4.43722 12.8135 4.17291C12.2957 3.94236 11.704 3.94236 11.1862 4.17291C10.5928 4.43711 10.1381 5.22458 9.22946 6.79845L4.37891 15.1999ZM12.0508 16.0001V16.1001L11.9502 16.1003V16.0001H12.0508Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div id="schedMsg" style="flex:1"></div></div>
+    <div class="alert" id="netAlert" hidden><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 11V16M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21ZM12.0498 8V8.1L11.9502 8.1002V8H12.0498Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div id="netMsg"></div></div>
+
+    <section class="kpis" id="sec-kpi" aria-label="공정 현황">
+      <div class="card kpi"><div class="l" id="l_all">계획 공정률 (작업기간 가중)</div><div class="v" id="k_all">–</div><div class="meter"><i id="m_all"></i></div></div>
+      <div class="card kpi"><div class="l">Bored pile</div><div class="v" id="k_pile">–</div><div class="meter"><i id="m_pile"></i></div></div>
+      <div class="card kpi"><div class="l">교각·교대</div><div class="v" id="k_pier">–</div><div class="meter"><i id="m_pier"></i></div></div>
+      <div class="card kpi"><div class="l">거더 가설 (경간)</div><div class="v" id="k_gird">–</div><div class="meter"><i id="m_gird"></i></div></div>
+      <div class="card kpi"><div class="l">상판 슬래브 (경간)</div><div class="v" id="k_deck">–</div><div class="meter"><i id="m_deck"></i></div></div>
+    </section>
+
+    <section class="card off" id="sec-prog" aria-label="실적 현황">
+      <div class="card-head"><h2><svg class="ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M4 19h16M6 16l4-5 3 3 5-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>실적 현황 · S-curve</h2><span class="sub" id="progSub"></span></div>
+      <div class="card-body" id="progBody"></div>
+    </section>
+
+    <section class="card" id="sec-base" aria-label="공정표 기준선">
+      <div class="card-head"><h2><svg class="ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M12 4l8 4-8 4-8-4 8-4zM4 12l8 4 8-4M4 16l8 4 8-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>공정표 기준선 (Revision)</h2><span class="sub">현재 기준선 = 실적기반 계산·공정표·주공정에 쓰는 계획 · 비교 기준선 = 지연 일수·S-curve·3D 색의 기준</span></div>
+      <div class="toolbar">
+        <button class="btn primary" type="button" id="blNew" disabled title="기준일까지 끝난 작업은 실적 날짜로, 이후는 실적기반 공정표로 새 기준선을 만듭니다">실적으로 새 기준선 만들기</button>
+        <button class="btn" type="button" id="blUp" disabled title="P6·MS Project로 다시 짠 공정표를 올려 새 기준선으로 추가합니다. 기준일까지는 실적 날짜로 맞춥니다">수정 공정표 올리기</button>
+        <span class="grow"></span><span class="sub">새 기준선을 만들어도 이전 기준선은 지우지 않습니다. Rev.0 대비(공기연장 근거)와 현재 기준선 대비(현장 관리)를 골라 볼 수 있습니다.</span>
+      </div>
+      <div class="card-body"><div class="tbl-wrap" style="max-height:none"><table class="tbl bltbl"><thead><tr><th style="width:56px">Rev</th><th>이름</th><th>출처</th><th style="width:96px">만든 날</th><th style="width:110px">계획 준공일</th><th style="width:110px">상태</th><th style="width:56px;text-align:center">현재</th><th style="width:56px;text-align:center">비교</th><th style="width:44px"></th></tr></thead><tbody id="blRows"></tbody></table></div></div>
+    </section>
+
+    <div class="grid-main">
+      <section class="card" id="sec-viewer" aria-label="4D 조감도">
+        <div class="card-head"><h2><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 12H7M3 12C3 16.9706 7.02944 21 12 21M3 12C3 7.02944 7.02944 3 12 3M7 12H17M7 12C7 16.9706 9.79086 21 12 21M7 12C7 7.02944 9.79086 3 12 3M17 12H21M17 12C17 7.02944 14.2091 3 12 3M17 12C17 16.9706 14.2091 21 12 21M21 12C21 7.02944 16.9706 3 12 3M21 12C21 16.9706 16.9706 21 12 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 2.5L12 21.5" stroke="currentColor" stroke-width="1.5"/></svg>4D 조감도</h2><span class="sub">위성지도: Esri World Imagery · 좌표계 PRS92 Zone III → WGS84</span></div>
+        <div class="toolbar">
+          <div class="seg" role="group" aria-label="보기">
+            <button class="btn" type="button" data-mode="plan" aria-pressed="true">계획</button>
+            <button class="btn" type="button" data-mode="act" disabled title="실적 입력에서 기준일을 정하면 쓸 수 있습니다">실적·예상</button>
+            <button class="btn" type="button" data-mode="cmp" disabled title="실적 입력에서 기준일을 정하면 쓸 수 있습니다">계획 대비</button>
+          </div>
+          <span class="sep"></span>
+          <div class="grp" role="group" aria-label="측점 시점">
+            <label class="field" for="sta">측점<input class="input" id="sta" value="6+000"></label>
+            <button class="btn" data-view="v-sideLake">측면 (호수측)</button>
+            <button class="btn" data-view="v-sideLand">측면 (육지측)</button>
+            <button class="btn" data-view="v-along">종단 따라보기</button>
+          </div>
+          <span class="sep"></span>
+          <label class="field" for="ve">높이<select class="select" id="ve"><option value="1">실제</option><option value="2" selected>2배</option><option value="3">3배</option></select></label>
+          <label class="check"><input type="checkbox" id="ghost" checked>완공 계획</label>
+          <label class="check" title="최근 30일 안에 끝난 작업을 주황색으로 강조합니다. 계획 준공일에는 자동으로 꺼집니다."><input type="checkbox" id="hl" checked>최근 30일 강조</label>
+          <label class="check"><input type="checkbox" id="under">지표 숨기기 (Bored pile 보기)</label>
+          <label class="check"><input type="checkbox" id="cad">도면 오버레이</label>
+          <label class="check"><input type="checkbox" id="lbls" checked>라벨</label>
+          <label class="check"><input type="checkbox" id="plbl">교각 번호</label>
+        </div>
+        <div class="viewer-wrap">
+          <div id="cesium"></div>
+          <div class="map-legend" aria-label="범례">
+            <span><i class="sw" style="background:#ffa833"></i>최근 30일 시공</span><span><i class="sw" style="background:#6d4c3d"></i>Bored pile</span>
+            <span><i class="sw" style="background:#4fc3f7"></i>가물막이</span><span><i class="sw" style="background:#a78bfa"></i>DSM/PVD</span>
+            <span><i class="sw" style="background:#b98b4e"></i>Preload</span><span><i class="sw" style="background:#e4572e"></i>가설잔교</span>
+            <span><i class="sw" style="background:#ffffff"></i>완공 계획</span><span><i class="sw" style="background:#968c76"></i>성토</span>
+            <span class="lg-cmp" hidden><i class="sw" style="background:#e63b3b"></i>계획보다 7일 넘게 늦음</span><span class="lg-cmp" hidden><i class="sw" style="background:#0f6fff"></i>7일 넘게 앞섬</span>
+            <span class="lg-cmp" hidden><i class="sw" style="background:#ff8f87;opacity:.6"></i>계획상 있어야 할 구조물</span>
+          </div>
+          <div class="map-hint" id="mapHint">좌클릭 드래그: 이동 · 우클릭 드래그/휠: 확대 · Ctrl+드래그: 회전·기울기 · 클릭: 구조물 일정</div>
+          <div id="credits"></div>
+        </div>
+        <div class="transport">
+          <div class="trow">
+            <button class="btn primary" id="play"><svg class="ic sm" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 17.3336V6.66698C5 5.78742 5 5.34715 5.18509 5.08691C5.34664 4.85977 5.59564 4.71064 5.87207 4.67499C6.18868 4.63415 6.57701 4.84126 7.35254 5.25487L17.3525 10.5882L17.3562 10.5898C18.2132 11.0469 18.642 11.2756 18.7826 11.5803C18.9053 11.8462 18.9053 12.1531 18.7826 12.4189C18.6418 12.7241 18.212 12.9537 17.3525 13.4121L7.35254 18.7454C6.57645 19.1593 6.1888 19.3657 5.87207 19.3248C5.59564 19.2891 5.34664 19.1401 5.18509 18.9129C5 18.6527 5 18.2132 5 17.3336Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span>재생</span></button>
+            <button class="icon-btn" id="back" aria-label="1개월 이전"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 5V19M18 10.5713V13.4287C18 15.2557 17.9998 16.1693 17.6162 16.6958C17.2817 17.1549 16.7679 17.4496 16.2028 17.5073C15.5548 17.5733 14.7656 17.113 13.1875 16.1924L10.7305 14.7592C9.17859 13.8539 8.40224 13.401 8.14062 12.8105C7.91202 12.2946 7.91202 11.7062 8.14062 11.1902C8.40267 10.5988 9.18117 10.1446 10.7383 9.2363L13.1875 7.80762L13.1895 7.80644C14.7663 6.88663 15.5551 6.42653 16.2028 6.49256C16.7679 6.55017 17.2817 6.84556 17.6162 7.30469C17.9998 7.83111 18 8.74424 18 10.5713Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="icon-btn" id="fwd" aria-label="1개월 이후"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17 5V19M6 10.5713V13.4287C6 15.2557 6 16.1693 6.38355 16.6958C6.71806 17.1549 7.23174 17.4496 7.79688 17.5073C8.44484 17.5733 9.23434 17.113 10.8125 16.1924L13.2617 14.7637L13.2701 14.7588C14.8216 13.8537 15.5979 13.4009 15.8595 12.8105C16.0881 12.2946 16.0881 11.7062 15.8595 11.1902C15.5974 10.5988 14.8188 10.1446 13.2617 9.2363L10.8125 7.80762C9.23434 6.88702 8.44484 6.42651 7.79688 6.49256C7.23174 6.55017 6.71806 6.84556 6.38355 7.30469C6 7.83111 6 8.74424 6 10.5713Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <label class="field" for="speed">속도<select class="select" id="speed"><option value="3">1주/0.1초</option><option value="7" selected>2주/0.1초</option><option value="15">1개월/0.1초</option></select></label>
+            <span class="tdate" id="date">–</span>
+            <span class="tphase" id="phase"></span>
+            <label class="check"><input type="checkbox" id="follow">작업전선 따라가기</label>
+            <button class="btn" id="today"><svg class="ic sm" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8H20M4 8V16.8002C4 17.9203 4 18.4801 4.21799 18.9079C4.40973 19.2842 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H16.8031C17.921 20 18.48 20 18.9074 19.7822C19.2837 19.5905 19.5905 19.2842 19.7822 18.9079C20 18.4805 20 17.9215 20 16.8036V8M4 8V7.2002C4 6.08009 4 5.51962 4.21799 5.0918C4.40973 4.71547 4.71547 4.40973 5.0918 4.21799C5.51962 4 6.08009 4 7.2002 4H8M20 8V7.19691C20 6.07899 20 5.5192 19.7822 5.0918C19.5905 4.71547 19.2837 4.40973 18.9074 4.21799C18.4796 4 17.9203 4 16.8002 4H16M16 2V4M16 4H8M8 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>오늘</button>
+          </div>
+          <input type="range" id="slider" min="0" max="1" step="1" aria-label="공정 기준일">
+          <div class="ticks" id="ticks"></div>
+        </div>
+      </section>
+
+      <div class="side-col">
+        <section class="card"><div class="card-head"><h2><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 14L12 20L3 14M21 10L12 16L3 10L12 4L21 10Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>성토부 현황</h2></div><div class="card-body" id="zones"></div></section>
+        <section class="card"><div class="card-head"><h2><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 17H11M20 14L16 18L14 16M4 12H15M4 7H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>진행 중인 작업</h2><span class="sub" id="nact"></span></div><div class="card-body"><div id="active"></div></div></section>
+        <section class="card"><div class="card-head"><h2><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2 20H4M4 20H14M4 20V6.2002C4 5.08009 4 4.51962 4.21799 4.0918C4.40973 3.71547 4.71547 3.40973 5.0918 3.21799C5.51962 3 6.08009 3 7.2002 3H10.8002C11.9203 3 12.4796 3 12.9074 3.21799C13.2837 3.40973 13.5905 3.71547 13.7822 4.0918C14 4.5192 14 5.07899 14 6.19691V12M14 20H20M14 20V12M20 20H22M20 20V12C20 11.0681 19.9999 10.6024 19.8477 10.2349C19.6447 9.74481 19.2557 9.35523 18.7656 9.15224C18.3981 9 17.9316 9 16.9997 9C16.0679 9 15.6019 9 15.2344 9.15224C14.7443 9.35523 14.3552 9.74481 14.1522 10.2349C14 10.6024 14 11.0681 14 12M7 10H11M7 7H11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>선택한 구조물</h2></div><div class="card-body" id="readout"><div class="empty">3D 조감도에서 교각·경간·성토부를 클릭하면 공정 일정이 표시됩니다.</div></div></section>
+      </div>
+    </div>
+
+    <section class="card" id="sec-sim" aria-label="가상 현장 메신저">
+      <div class="card-head"><h2><svg class="ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-5 4V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>가상 현장 · 메신저 (시험)</h2><span class="sub">가상 작업반이 계획을 받고 실적을 회신 → 앱이 해석 → 검토함에서 확인하면 실적에 반영. 4단계에서 Telegram으로 바뀝니다</span></div>
+      <div class="alert" id="simBanner" hidden style="margin:12px 20px 0"><svg class="ic" aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M12 8v5M12 16.5v.5M10.3 4l-7.5 13A2 2 0 004.5 20h15a2 2 0 001.7-3L13.7 4a2 2 0 00-3.4 0z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><div>가상 현장 데이터로 작업 중입니다. 저장하면 <b>LLRN_CP1B_가상현장.json</b>으로 따로 저장되어 실제 실적 파일과 섞이지 않습니다.</div></div>
+      <div class="toolbar">
+        <label class="field" for="simScen">시나리오<select class="select" id="simScen" style="max-width:300px"></select></label>
+        <button class="btn" type="button" id="simStart">가상 현장 시작</button><button class="btn" type="button" id="simStop" hidden>멈추기</button>
+        <span class="sep"></span>
+        <button class="btn primary" type="button" id="simDay" disabled>하루 진행</button><button class="btn" type="button" id="simWeek" disabled>1주</button><button class="btn" type="button" id="simMonth" disabled>1개월</button>
+        <label class="check" title="번호형·위치와 공종이 분명한 회신은 검토 없이 바로 반영합니다"><input type="checkbox" id="simAuto" checked>신뢰도 80% 이상 자동 반영</label>
+        <span class="grow"></span><button class="btn" type="button" id="simInbox" title="data\inbox\*.jsonl (4단계 봇이 쓰는 파일)을 읽어 검토함에 넣습니다">수신함 파일 읽기</button>
+      </div>
+      <div class="simstate"><span id="simState">–</span><span id="simStats"></span></div>
+      <div class="simgrid">
+        <div class="simchats" id="simChats" role="list" aria-label="대화방"></div>
+        <div class="simconv">
+          <div class="simmsgs" id="simMsgs" aria-live="polite"></div>
+          <div class="simcomp"><textarea class="input" id="simText" rows="2" placeholder="작업반 회신을 직접 써서 해석을 시험해 보세요. 예) P61 파일캡 완료, P62 코핑 50%  (Ctrl+Enter 보내기)" disabled></textarea>
+            <div class="simsend"><span class="sub" id="simWho"></span><button class="btn primary" type="button" id="simSend" disabled>보내기</button></div></div>
+        </div>
+        <div class="simrev"><div class="revh"><b>검토함</b> <span class="sub" id="revCount">0건</span><span class="grow"></span><button class="btn" type="button" id="revAll" disabled>신뢰도 80% 이상 모두 반영</button></div><div id="revList"></div></div>
+      </div>
+    </section>
+
+    <section class="card" id="sec-act" aria-label="실적 입력">
+      <div class="card-head"><h2><svg class="ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M4 20h4l10-10-4-4L4 16v4zM13.5 6.5l4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>실적 입력</h2><span class="sub">세부 activity에만 입력 · 날짜는 현장(UTC+8) 기준 · 예상 완료는 Retained logic, 공정표 캘린더로 계산</span></div>
+      <div class="filebar">
+        <div class="fl"><svg class="ic" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none"><path d="M6 3h8l4 4v14H6V3zM14 3v4h4M9 13h6M9 17h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="fileState">–</span></div>
+        <div class="fb"><button class="btn" type="button" id="fConnect">폴더 연결</button><button class="btn primary" type="button" id="fSave" disabled>저장</button>
+          <button class="btn" type="button" id="fOpen">파일 열기</button><button class="btn" type="button" id="fDown" disabled>내려받기</button></div>
+        <input type="file" id="fOpenIn" accept=".json" hidden>
+      </div>
+      <div class="fmsg" id="fileMsg" role="status" hidden></div>
+      <div class="toolbar">
+        <label class="field" for="dataDate">기준일<input class="input" type="date" id="dataDate" style="width:150px"></label>
+        <button class="btn" type="button" id="ddToday">오늘 (현장)</button>
+        <span class="sep"></span>
+        <label class="field" for="actFilter">보기<select class="select" id="actFilter">
+          <option value="due" selected>기준일까지 착수 예정 · 미완료</option><option value="week">다음 1주 진행 예정</option><option value="run">진행 중</option>
+          <option value="late">예상 완료가 계획보다 늦음</option><option value="entered">실적 입력한 것</option><option value="all">전체</option></select></label>
+        <label class="field" for="actGrp">공종<select class="select" id="actGrp" style="max-width:260px"></select></label>
+        <label class="field" for="actQ">찾기<input class="input" id="actQ" placeholder="activity · 교각 번호 · ID" style="width:200px"></label>
+        <span class="grow"></span><span class="sub" id="actCount"></span>
+        <button class="btn" type="button" id="actFillAll" title="시험용: 지금 목록에 보이는 activity를 기준일까지 계획대로 채웁니다">목록을 계획대로 채우기</button>
+      </div>
+      <div class="card-body">
+        <div class="empty" id="actNeed"><b>기준일</b>(실적을 마감한 날)을 먼저 정하세요. 정하면 그날까지 착수했어야 할 activity가 표시됩니다.</div>
+        <div id="actMain" hidden>
+          <div class="tbl-wrap"><table class="tbl acttbl"><thead><tr><th>activity</th><th style="width:150px">계획</th><th style="width:150px">실제 착수</th><th style="width:90px">진척률 %</th><th style="width:150px">실제 완료</th><th style="width:130px">예상 완료 (차이)</th><th style="width:110px">상태</th><th style="width:44px"></th></tr></thead><tbody id="actRows"></tbody></table></div>
+          <div style="text-align:center;margin-top:10px"><button class="btn" type="button" id="actMore" hidden>200개 더 보기</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="sec-prof"><div class="card-head"><h2><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 15.0002V16.8C3 17.9201 3 18.4798 3.21799 18.9076C3.40973 19.2839 3.71547 19.5905 4.0918 19.7822C4.5192 20 5.07899 20 6.19691 20H21.0002M3 15.0002V5M3 15.0002L6.8534 11.7891L6.85658 11.7865C7.55366 11.2056 7.90288 10.9146 8.28154 10.7964C8.72887 10.6567 9.21071 10.6788 9.64355 10.8584C10.0105 11.0106 10.3323 11.3324 10.9758 11.9759L10.9822 11.9823C11.6357 12.6358 11.9633 12.9635 12.3362 13.1153C12.7774 13.2951 13.2685 13.3106 13.7207 13.1606C14.1041 13.0334 14.4542 12.7275 15.1543 12.115L21 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>종단면도 · 본선</h2><span class="sub">Bored pile 근입 포함 · 클릭하면 해당 측점 측면 시점으로 이동</span></div><div class="card-body"><div id="prof"></div></div></section>
+
+    <section class="card" id="sec-cp"><div class="card-head"><h2><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.12132 15.8787C7.57843 15.3358 6.82843 15 6 15C4.34315 15 3 16.3431 3 18C3 19.6569 4.34315 21 6 21C7.65685 21 9 19.6569 9 18C9 17.1716 8.66421 16.4216 8.12132 15.8787ZM8.12132 15.8787L15.8787 8.12132M15.8787 8.12132C16.4216 8.66421 17.1716 9 18 9C19.6569 9 21 7.65685 21 6C21 4.34315 19.6569 3 18 3C16.3431 3 15 4.34315 15 6C15 6.82843 15.3358 7.57843 15.8787 8.12132ZM15.8787 8.12132L15.8828 8.11719" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>주공정 (Critical Path)</h2><span class="sub" id="cpSub"></span></div><div class="card-body" id="cpBody"></div></section>
+
+    <section class="card" id="sec-gantt"><div class="card-head"><h2><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8H20M4 8V16.8002C4 17.9203 4 18.4801 4.21799 18.9079C4.40973 19.2842 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H16.8031C17.921 20 18.48 20 18.9074 19.7822C19.2837 19.5905 19.5905 19.2842 19.7822 18.9079C20 18.4805 20 17.9215 20 16.8036V8M4 8V7.2002C4 6.08009 4 5.51962 4.21799 5.0918C4.40973 4.71547 4.71547 4.40973 5.0918 4.21799C5.51962 4 6.08009 4 7.2002 4H8M20 8V7.19691C20 6.07899 20 5.5192 19.7822 5.0918C19.5905 4.71547 19.2837 4.40973 18.9074 4.21799C18.4796 4 17.9203 4 16.8002 4H16M16 2V4M16 4H8M8 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>공정표</h2><span class="sub">행 클릭: 펼치기 · 막대 클릭: 해당 일자로 이동 · <span style="color:var(--color-status-danger)">빨간 막대 = 주공정</span> · 실적·예상 보기에서 아래 얇은 막대 = 실적·예상 (빨강 = 계획보다 7일 넘게 늦음)</span>
+      <label class="check"><input type="checkbox" id="cpOnly">주공정만 보기</label></div><div class="card-body"><div id="gantt"></div></div></section>
+
+    <div class="two" id="sec-basis">
+      <section class="card"><div class="card-head"><h2><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 17H15M9 14H15M13.0004 3.00087C12.9048 3 12.7974 3 12.6747 3H8.2002C7.08009 3 6.51962 3 6.0918 3.21799C5.71547 3.40973 5.40973 3.71547 5.21799 4.0918C5 4.51962 5 5.08009 5 6.2002V17.8002C5 18.9203 5 19.4801 5.21799 19.9079C5.40973 20.2842 5.71547 20.5905 6.0918 20.7822C6.51921 21 7.079 21 8.19694 21L15.8031 21C16.921 21 17.48 21 17.9074 20.7822C18.2837 20.5905 18.5905 20.2842 18.7822 19.9079C19 19.4805 19 18.9215 19 17.8036V9.32568C19 9.20302 18.9999 9.09553 18.999 9M13.0004 3.00087C13.2858 3.00348 13.4657 3.01407 13.6382 3.05547C13.8423 3.10446 14.0379 3.18526 14.2168 3.29492C14.4186 3.41857 14.5918 3.59181 14.9375 3.9375L18.063 7.06298C18.4089 7.40889 18.5809 7.58136 18.7046 7.78319C18.8142 7.96214 18.8953 8.15726 18.9443 8.36133C18.9857 8.53379 18.9964 8.71454 18.999 9M13.0004 3.00087L13 5.80021C13 6.92031 13 7.48015 13.218 7.90797C13.4097 8.2843 13.7155 8.59048 14.0918 8.78223C14.5192 9 15.079 9 16.1969 9H18.999" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>모델링·공정 연동 기준</h2></div><div class="card-body">
+        <p class="note"><b>형상</b> 램프·Slip Road 선형(E1/E2 곡선제원), 종단 FG, 성토 표준단면(1:2 법면, EL +2.5 소단), 교각 좌표·FG, 회전교차로(R 46 m).</p>
+        <p class="note"><b>공정 연동</b> 교각마다 Bored pile·하부공(PIER n) activity, 경간마다 거더 가설(Span n)·슬래브(Deck &amp; slab n) activity를 직접 연결. 성토구역은 가물막이·배수·굴착·쇄석·지반개량·성토·사석·Surcharge·포장 activity를 구역 안 작업 방향 순서로 진행.</p>
+        <p class="note"><b>지도 정합</b> PRS92 Zone III(EPSG:3123) → WGS84, NAMRIA 7-parameter. 교각 좌표 기준 오차 1 m 이내.</p>
+        <details class="near"><summary>공정표 연결 가정 (<span id="asmN">0</span>건)</summary><ul id="asmList" class="note" style="padding-left:18px;margin:8px 0 0"></ul></details>
+      </div></section>
+      <section class="card"><div class="card-head"><h2><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 11V16M12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21ZM12.0498 8V8.1L11.9502 8.1002V8H12.0498Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>범례</h2></div><div class="card-body"><div class="legend2">
+        <span><i class="sw" style="background:#ffa833"></i>최근 30일 시공분</span><span><i class="sw" style="background:#6d4c3d"></i>Bored pile</span>
+        <span><i class="sw" style="background:#4fc3f7"></i>가물막이 (Sheet pile)</span><span><i class="sw" style="background:#c7c2b4"></i>가설 우회로</span>
+        <span><i class="sw" style="background:#a78bfa"></i>DSM / PVD</span><span><i class="sw" style="background:#b98b4e"></i>Preload</span>
+        <span><i class="sw" style="background:#968c76"></i>성토 법면</span><span><i class="sw" style="background:#e4572e"></i>가설잔교</span>
+        <span><i class="sw" style="background:#c4c6c2"></i>교량 상판</span><span><i class="sw" style="background:#3a3d42"></i>포장</span>
+      </div></div></section>
+    </div>
+  </div>
+</main>
+<div class="scrim" id="impScrim" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="impTitle" id="impDlg">
+    <div class="dlg-head"><h2 id="impTitle">공정표 불러오기</h2><button class="icon-btn" id="impClose" aria-label="닫기"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.4697 5.46967C17.7626 5.17678 18.2374 5.17679 18.5303 5.46967C18.8232 5.76256 18.8232 6.23732 18.5303 6.53022L13.0606 11.9999L18.5303 17.4697C18.8231 17.7626 18.8232 18.2373 18.5303 18.5302C18.2374 18.8231 17.7626 18.8231 17.4697 18.5302L12 13.0605L6.53028 18.5302C6.23738 18.8231 5.76262 18.8231 5.46973 18.5302C5.17685 18.2373 5.17684 17.7626 5.46973 17.4697L10.9395 11.9999L5.46973 6.53022C5.17684 6.23732 5.17684 5.76256 5.46973 5.46967C5.76262 5.17678 6.23738 5.17678 6.53028 5.46967L12 10.9394L17.4697 5.46967Z" fill="currentColor"/></svg></button></div>
+    <div class="dlg-body">
+      <div id="impStep1">
+        <label class="drop" id="drop" for="impFile"><svg class="ic " aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 18V12M15 14L12 12L9 14M13 3.00087C12.9045 3 12.7973 3 12.6747 3H8.2002C7.08009 3 6.51962 3 6.0918 3.21799C5.71547 3.40973 5.40973 3.71547 5.21799 4.0918C5 4.51962 5 5.08009 5 6.2002V17.8002C5 18.9203 5 19.4801 5.21799 19.9079C5.40973 20.2842 5.71547 20.5905 6.0918 20.7822C6.51921 21 7.079 21 8.19694 21L15.8031 21C16.921 21 17.48 21 17.9074 20.7822C18.2837 20.5905 18.5905 20.2842 18.7822 19.9079C19 19.4805 19 18.9215 19 17.8036V9.32568C19 9.20296 19 9.09561 18.9991 9M13 3.00087C13.2856 3.00347 13.4663 3.01385 13.6388 3.05526C13.8429 3.10425 14.0379 3.18526 14.2168 3.29492C14.4186 3.41857 14.5918 3.59182 14.9375 3.9375L18.063 7.06298C18.4089 7.40889 18.5809 7.58136 18.7046 7.78319C18.8142 7.96214 18.8953 8.15726 18.9443 8.36133C18.9857 8.53376 18.9963 8.71451 18.9991 9M13 3.00087V5.8C13 6.9201 13 7.47977 13.218 7.90759C13.4097 8.28392 13.7155 8.59048 14.0918 8.78223C14.5192 9 15.079 9 16.1969 9H18.9991M18.9991 9H19.0002" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><b>공정표 파일을 끌어다 놓거나 클릭해서 선택</b><span>MS Project XML (.xml) · Primavera P6 (.xer)</span></label>
+        <input type="file" id="impFile" accept=".xml,.xer,.mpp" hidden>
+        <p class="help">MS Project 원본(.mpp)은 MS Project에서 [파일 → 다른 이름으로 저장 → XML 형식(*.xml)]으로 저장해서 올려 주세요. 파일은 이 PC의 브라우저 안에서만 읽고, 외부로 보내지 않습니다.</p>
+        <div id="impErr" class="err" role="alert" hidden></div>
+      </div>
+      <div id="impStep2" hidden>
+        <div class="sumgrid" id="impSum"></div>
+        <div class="maphead"><h3>3D 구조물 ↔ activity 연결</h3><span id="impStat"></span><label class="check"><input type="checkbox" id="impOnly">확인이 필요한 항목만</label></div>
+        <div id="impActs" hidden></div>
+        <div class="tbl-wrap"><table class="tbl maptbl"><thead><tr><th style="width:24%">구조물 일정 항목</th><th style="width:26%">기준 activity (re3)</th><th>업로드 공정표 activity</th><th style="width:90px">일치도</th></tr></thead><tbody id="impRows"></tbody></table></div>
+      </div>
+    </div>
+    <div class="dlg-foot"><button class="btn" id="impReset"><svg class="ic sm" aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M10 16H5V21M14 8H19V3M4.58301 9.0034C5.14369 7.61566 6.08244 6.41304 7.29255 5.53223C8.50266 4.65141 9.93686 4.12752 11.4298 4.02051C12.9227 3.9135 14.4147 4.2274 15.7381 4.92661C17.0615 5.62582 18.1612 6.68254 18.9141 7.97612M19.4176 14.9971C18.8569 16.3848 17.9181 17.5874 16.708 18.4682C15.4979 19.3491 14.0652 19.8723 12.5723 19.9793C11.0794 20.0863 9.58606 19.7725 8.2627 19.0732C6.93933 18.374 5.83882 17.3175 5.08594 16.0239" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>기본 공정표(re3)로 되돌리기</button><span class="grow"></span><label class="field" for="impMode" id="impModeWrap">적용 방식<select class="select" id="impMode" style="max-width:360px"><option value="add">새 기준선(Rev.n)으로 추가 — 기준일까지 실적으로 맞춤</option><option value="replace">현재 기준선 바꾸기</option></select></label><button class="btn" id="impBack" hidden>다른 파일 선택</button><button class="btn" id="impCancel">취소</button><button class="btn primary" id="impApply" disabled>적용</button></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/cesium@1.121.0/Build/Cesium/Cesium.js"></script>
+<script>/*@@ENGINE@@*/</script>
+<script>/*@@IMPORTER@@*/</script>
+<script>/*@@SIMCORE@@*/</script>
+<script>/*@@APP@@*/</script>
+</body>
+</html>
