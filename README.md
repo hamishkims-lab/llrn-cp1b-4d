@@ -40,7 +40,7 @@ python assemble.py           # dist/LLRN_CP1B_4D_공정관리.html 생성
 python pretest/build.py      # dist/LLRN_사전점검_파일저장.html 생성
 ```
 
-GitHub에 올리면 Actions가 자동으로 시험하고 HTML을 조립합니다. 결과 파일은 Actions 실행 화면의 **Artifacts**에서 내려받습니다. `v6.0` 같은 태그를 붙이면 Release에 HTML이 첨부됩니다.
+GitHub에 올리면 Actions가 자동으로 시험하고 HTML을 조립합니다. 저장소가 공개이고 Settings → Pages → Source가 "GitHub Actions"이면 `https://hamishkims-lab.github.io/llrn-cp1b-4d/`가 자동으로 갱신됩니다 (노션 `/embed`에 이 주소를 넣으면 노션 안에서 보기 가능, 저장 기능은 새 창에서). 결과 파일은 Actions 실행 화면의 **Artifacts**에서 내려받습니다. `v6.0` 같은 태그를 붙이면 Release에 HTML이 첨부됩니다.
 
 ## 쓰는 방법 (요약)
 

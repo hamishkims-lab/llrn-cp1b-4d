@@ -1,4 +1,4 @@
-name: 시험 · 빌드
+name: 시험 · 빌드 · 배포
 
 on:
   push:
@@ -9,6 +9,12 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -29,6 +35,9 @@ jobs:
         run: |
           python assemble.py dist/LLRN_CP1B_4D_공정관리.html
           python pretest/build.py dist/LLRN_사전점검_파일저장.html
+          cp dist/LLRN_CP1B_4D_공정관리.html dist/index.html
+          cp dist/LLRN_사전점검_파일저장.html dist/pretest.html
+          cp samples/LLRN_CP1B_실적_예시_20271231.json dist/sample.json
 
       - name: 결과물 올리기 (Actions 실행 화면에서 내려받기)
         uses: actions/upload-artifact@v4
@@ -37,9 +46,27 @@ jobs:
           path: dist/
           retention-days: 30
 
+      - name: GitHub Pages용 묶음
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && github.event.repository.private == false
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
+
       - name: 버전 태그면 Release 만들기
         if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
           files: dist/*
           generate_release_notes: true
+
+  # 공개 저장소이고 Settings → Pages → Source가 "GitHub Actions"일 때 웹 주소를 갱신
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request' && github.event.repository.private == false
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

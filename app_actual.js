@@ -6,7 +6,10 @@ const PFILE='LLRN_CP1B_실적.json',PFMT='llrn-4d-project';
 const pfile=()=>PRJ.sim&&PRJ.sim.on?'LLRN_CP1B_가상현장.json':PFILE;   // virtual-site runs never overwrite the real actuals file
 const newPrj=()=>({format:PFMT,ver:1,project:'LLRN CP1B',created:new Date().toISOString(),dataDate:null,actuals:{},log:[],snapshots:[]});
 let PRJ=newPrj(),DIRH=null,FINFO=null,DIRTY=0,recalcT=null,actPage=200;
-const FSA='showDirectoryPicker' in window;
+// inside another page (e.g. a Notion embed) the browser blocks file pickers, so saving falls back to download/open
+const EMBED=(()=>{try{return window.self!==window.top}catch(e){return true}})();
+const FSA='showDirectoryPicker' in window&&!EMBED;
+if(EMBED){const a=$('embedAlert');if(a){a.hidden=false;const l=document.getElementById('embedOpen');if(l)l.href=location.href}}
 // ---------- IndexedDB: working draft + folder handle (survive a page reload) ----------
 function idb(){return new Promise((ok,no)=>{const r=indexedDB.open('llrn4d',1);r.onupgradeneeded=()=>r.result.createObjectStore('kv');r.onsuccess=()=>ok(r.result);r.onerror=()=>no(r.error)})}
 async function kv(k,v){try{const d=await idb();return await new Promise((ok,no)=>{const tx=d.transaction('kv',v===undefined?'readonly':'readwrite'),s=tx.objectStore('kv');const q=v===undefined?s.get(k):v===null?s.delete(k):s.put(v,k);q.onsuccess=()=>ok(q.result);q.onerror=()=>no(q.error)})}catch(e){return undefined}}
@@ -21,7 +24,7 @@ function fileMsg(html,kind,buttons){const el=$('fileMsg');if(!html){el.hidden=tr
   el.innerHTML=`<span>${html}</span>`+(buttons||[]).map((b,i)=>`<button class="btn" type="button" data-i="${i}">${b[0]}</button>`).join('');
   el.querySelectorAll('button').forEach(x=>x.addEventListener('click',()=>buttons[+x.dataset.i][1]()))}
 function fileStatus(){const f=$('fileState');
-  const where=DIRH?`폴더 <b>${esc(DIRH.name)}</b> · ${pfile()}`:FSA?'폴더 연결 안 됨 (브라우저에만 임시 저장)':'이 브라우저는 폴더 직접 저장을 지원하지 않아 내려받기로 저장합니다';
+  const where=DIRH?`폴더 <b>${esc(DIRH.name)}</b> · ${pfile()}`:FSA?'폴더 연결 안 됨 (브라우저에만 임시 저장)':EMBED?'다른 페이지 안에서 열려 있어 [내려받기]로 저장하고 [파일 열기]로 불러옵니다 — 폴더 저장은 새 창에서':'이 브라우저는 폴더 직접 저장을 지원하지 않아 내려받기로 저장합니다';
   const saved=FINFO&&FINFO.opened?` · 불러온 파일 ${esc(FINFO.opened)}`:FINFO&&FINFO.at?` · 마지막 저장 ${new Date(FINFO.at).toLocaleString('ko-KR',{hour12:false})}`:'';
   f.innerHTML=where+saved+(DIRTY?` · <span class="dirty">저장 안 된 변경 ${DIRTY}건</span>`:'');
   $('fSave').disabled=!hasAct();$('fDown').disabled=!hasAct();$('fConnect').textContent=DIRH?'다른 폴더':'폴더 연결'}
