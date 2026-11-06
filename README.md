@@ -31,6 +31,7 @@ Laguna Lakeshore Road Network Phase 1 · CP1B (Sucat – Alabang, STA 4+160 ~ 8+
 | `tests/run_tests.js` | 핵심 계산 자동 시험 |
 | `samples/` | 예시 실적(착공 2027.03.01, 기준일 2027.12.31), 수신함 예시 |
 | `docs/` | 구성기준서, 수신함 형식, AI 일일보고 자동화 흐름도 |
+| `route-survey/` | 알라방 화물차 운송 경로 조사 페이지 (별도 단일 HTML, [`route-survey/README.md`](route-survey/README.md)) |
 
 ## 만들기 · 시험
 

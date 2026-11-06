@@ -39,6 +39,13 @@ jobs:
           cp dist/LLRN_사전점검_파일저장.html dist/pretest.html
           cp samples/LLRN_CP1B_실적_예시_20271231.json dist/sample.json
 
+      - name: 알라방 경로 조사 HTML 조립
+        run: |
+          python route-survey/build.py dist/alabang_route_survey.html
+          node --check dist/alabang_route_survey.check.js
+          rm dist/alabang_route_survey.check.js
+          cp dist/alabang_route_survey.html dist/route-survey.html
+
       - name: 결과물 올리기 (Actions 실행 화면에서 내려받기)
         uses: actions/upload-artifact@v4
         with:

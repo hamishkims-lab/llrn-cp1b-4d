@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>GS건설 | 경로 조사 · Alabang Route Survey</title>
+<link rel="icon" type="image/svg+xml" href="{{SYMBOL_DATAURI}}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<style>
+/* ===== GS E&C Enterprise UI tokens ===== */
+:root, [data-theme="light"]{
+  --color-action-primary:#0f6fff; --color-action-primary-hover:#0e65e8; --color-action-primary-active:#0b4fb5;
+  --color-text-on-primary:#ffffff;
+  --color-action-secondary:#1d1f24; --color-text-on-secondary:#ffffff; --color-text-hint:#b0b0b0;
+  --color-bg-disabled:#e2e4e9; --color-bg-inverse:#1d1f24; --color-text-inverse:#ebeced; --shadow-level-3:0px 4px 12px rgba(0,0,0,.12);
+  --color-text-strong:#000000; --color-text-primary:#1c1c1c; --color-text-secondary:#303030; --color-text-muted:#737373; --color-text-disabled:#c4c4c4;
+  --color-bg-page:#ffffff; --color-bg-content:#eef1f5; --color-bg-surface:#ffffff; --color-bg-surface-alt-1:#f2f3f6; --color-bg-surface-alt-2:#e2e4e9;
+  --color-divider-strong:#e2e4e9; --color-divider-default:#e9ebef;
+  --color-border-strong:#ccd0d6; --color-border-default:#e2e4e9; --color-border-subtle:#e9ebef;
+  --color-status-success:#15b874; --color-status-warning:#ffa833; --color-status-danger:#e63b3b;
+  --color-accent-orange:#fe6f3f; --color-accent-purple:#b357ff; --color-accent-skyblue:#00bdde;
+  --shadow-level-1:0px 1px 3px rgba(0,0,0,.06); --shadow-level-2:0px 2px 8px rgba(0,0,0,.08); --shadow-level-3:0px 4px 12px rgba(0,0,0,.12);
+  --color-action-secondary:#1d1f24; --color-text-on-secondary:#ffffff; --color-text-hint:#b0b0b0;
+  --color-bg-disabled:#e2e4e9; --color-bg-inverse:#1d1f24; --color-text-inverse:#ebeced;
+}
+[data-theme="dark"]{
+  --color-action-primary:#3f8cff; --color-action-primary-hover:#0f6fff; --color-action-primary-active:#0e65e8;
+  --color-action-secondary:#e9ebef; --color-text-on-secondary:#1d1f24; --color-text-hint:#737373;
+  --color-bg-disabled:#282b33; --color-bg-inverse:#ffffff; --color-text-inverse:#000000;
+  --color-text-strong:#ffffff; --color-text-primary:#ebeced; --color-text-secondary:#c4c4c4; --color-text-muted:#8a8a8a; --color-text-disabled:#5c5c5c;
+  --color-bg-page:#1d1f24; --color-bg-content:#15171c; --color-bg-surface:#1d1f24; --color-bg-surface-alt-1:#282b33; --color-bg-surface-alt-2:#333741;
+  --color-divider-strong:#333741; --color-divider-default:#282b33;
+  --color-border-strong:#4a505f; --color-border-default:#333741; --color-border-subtle:#282b33;
+  --color-status-success:#44c690; --color-status-warning:#ffb95c; --color-status-danger:#eb5e5e;
+  --color-accent-orange:#fe8c65; --color-accent-purple:#c279ff; --color-accent-skyblue:#33cae5;
+  --color-action-secondary:#e9ebef; --color-text-on-secondary:#1d1f24; --color-text-hint:#737373;
+  --color-bg-disabled:#282b33; --color-bg-inverse:#ffffff; --color-text-inverse:#000000;
+}
+:root{
+  --font-sans:"Pretendard Variable","Pretendard","Apple SD Gothic Neo","Noto Sans KR","Segoe UI",Roboto,-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-mono:"SF Mono",SFMono-Regular,Menlo,Consolas,monospace;
+  --space-4:4px; --space-8:8px; --space-12:12px; --space-16:16px; --space-20:20px; --space-24:24px; --space-32:32px;
+  --radius-xs:4px; --radius-sm:8px; --radius-md:12px; --radius-lg:16px; --radius-pill:9999px;
+  --size-header-height:64px; --size-sidenav-expanded:300px; --size-nav-row-depth1:48px; --size-table-row:52px;
+  /* 데이터 범주 색: 경로 구분 전용 */
+  --route-r1:var(--color-accent-orange); --route-r2:var(--color-accent-purple); --route-common:var(--color-accent-skyblue);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{font-family:var(--font-sans);font-size:14px;line-height:1.5;color:var(--color-text-primary);background:var(--color-bg-content);-webkit-font-smoothing:antialiased}
+a{color:var(--color-action-primary);font-weight:600;text-decoration:none}
+a:hover{color:var(--color-action-primary-hover);text-decoration:underline}
+:focus-visible{outline:2px solid var(--color-action-primary);outline-offset:2px}
+.gs-num{font-variant-numeric:tabular-nums}
+
+/* ===== GlobalHeader ===== */
+.gs-header{position:sticky;top:0;z-index:1100;height:var(--size-header-height);display:flex;align-items:center;gap:var(--space-16);padding:0 var(--space-24);background:var(--color-bg-page);border-bottom:1px solid var(--color-border-default)}
+.gs-brand{display:flex;align-items:center;gap:var(--space-12);text-decoration:none;color:var(--color-text-primary)}
+.gs-brand:hover{text-decoration:none}
+.gs-brand__logo{height:28px;width:auto;display:block}
+.gs-brand__logo svg{height:28px;width:auto;display:block}
+.gs-brand__logo--dark{display:none}
+[data-theme="dark"] .gs-brand__logo--light{display:none}
+[data-theme="dark"] .gs-brand__logo--dark{display:block}
+.gs-brand__divider{width:1px;height:20px;background:var(--color-border-strong)}
+.gs-brand__service{font-size:18px;font-weight:700;white-space:nowrap}
+.gs-header__meta{margin-left:auto;display:flex;align-items:center;gap:var(--space-12);font-size:13px;color:var(--color-text-muted)}
+.gs-btn{height:40px;padding:0 var(--space-16);border-radius:var(--radius-sm);font:600 13px var(--font-sans);cursor:pointer;border:1px solid var(--color-border-strong);background:var(--color-bg-surface);color:var(--color-text-primary)}
+.gs-btn:hover{background:var(--color-bg-surface-alt-1)}
+.gs-btn:active{background:var(--color-bg-surface-alt-2)}
+
+/* ===== AppShell + SideNav ===== */
+.gs-shell{display:grid;grid-template-columns:var(--size-sidenav-expanded) minmax(0,1fr);min-height:calc(100vh - var(--size-header-height))}
+.gs-sidenav{position:sticky;top:var(--size-header-height);height:calc(100vh - var(--size-header-height));overflow-y:auto;background:var(--color-bg-page);border-right:1px solid var(--color-border-default);padding:var(--space-16) var(--space-12)}
+.gs-sidenav__section{margin-bottom:var(--space-16)}
+.gs-sidenav__label{font-size:12px;font-weight:600;color:var(--color-text-muted);padding:var(--space-8) var(--space-12)}
+.gs-sidenav__item{display:flex;align-items:center;gap:var(--space-12);width:100%;min-height:var(--size-nav-row-depth1);padding:var(--space-8) var(--space-12);border:0;border-radius:var(--radius-sm);background:transparent;color:var(--color-text-secondary);font:400 15px var(--font-sans);text-align:left;cursor:pointer}
+.gs-sidenav__item:hover{background:var(--color-bg-surface-alt-1)}
+.gs-sidenav__item[aria-selected="true"]{background:var(--color-bg-surface-alt-1);color:var(--color-text-strong);font-weight:700}
+.gs-sidenav__item[aria-selected="true"] .gs-sidenav__text small{font-weight:400}
+.gs-sidenav__dot{flex:none;width:10px;height:10px;border-radius:var(--radius-pill)}
+.gs-sidenav__text{display:flex;flex-direction:column;line-height:1.35}
+.gs-sidenav__text small{font-size:12px;color:var(--color-text-muted)}
+
+.gs-main{min-width:0;padding:var(--space-24) var(--space-32) var(--space-32)}
+.gs-page-head{margin-bottom:var(--space-24)}
+.gs-page-head__eyebrow{font-size:12px;font-weight:600;color:var(--color-text-muted)}
+.gs-page-head h1{font-size:24px;font-weight:700;margin:var(--space-4) 0;color:var(--color-text-strong)}
+.gs-page-head p{margin:0;color:var(--color-text-secondary);font-size:15px}
+.gs-kpis{display:flex;flex-wrap:wrap;gap:var(--space-8);margin-top:var(--space-12)}
+.gs-chip{display:inline-flex;align-items:center;gap:var(--space-8);height:32px;padding:0 var(--space-12);border-radius:var(--radius-pill);background:var(--color-bg-surface);border:1px solid var(--color-border-default);font-size:13px;color:var(--color-text-secondary)}
+.gs-chip b{font-weight:700;color:var(--color-text-primary)}
+
+.view{display:none}.view.active{display:block}
+
+/* ===== Card ===== */
+.gs-card{background:var(--color-bg-surface);border:1px solid var(--color-border-default);border-radius:var(--radius-md);padding:var(--space-20);margin-bottom:var(--space-16)}
+.gs-card--compact{border-radius:var(--radius-sm);padding:var(--space-16)}
+.gs-card__title{font-size:18px;font-weight:700;margin:0 0 var(--space-4);color:var(--color-text-strong)}
+.gs-card__meta{font-size:13px;color:var(--color-text-muted);margin:0 0 var(--space-12)}
+.gs-card p{margin:var(--space-8) 0}
+
+/* ===== Table ===== */
+.gs-table-wrap{overflow-x:auto;border:1px solid var(--color-border-default);border-radius:var(--radius-sm)}
+.gs-table{width:100%;border-collapse:collapse;font-size:14px}
+.gs-table th{height:44px;padding:0 var(--space-16);background:var(--color-bg-surface-alt-1);font-size:13px;font-weight:600;color:var(--color-text-secondary);text-align:left;white-space:nowrap;border-bottom:1px solid var(--color-divider-strong)}
+.gs-table td{height:var(--size-table-row);padding:var(--space-12) var(--space-16);border-bottom:1px solid var(--color-divider-default);vertical-align:middle;color:var(--color-text-primary)}
+.gs-table tr:last-child td{border-bottom:0}
+.gs-table tbody tr:hover td{background:var(--color-bg-surface-alt-1)}
+.gs-table .is-sub{color:var(--color-text-muted);font-size:13px}
+.gs-table--kv th{width:140px;background:var(--color-bg-surface-alt-1);vertical-align:middle;border-bottom:1px solid var(--color-divider-default)}
+.gs-table tr.is-click{cursor:pointer}
+
+/* ===== Badge ===== */
+.gs-badge{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 var(--space-8);border-radius:var(--radius-xs);background:var(--color-bg-surface-alt-1);font-size:12px;font-weight:600;color:var(--color-text-secondary);white-space:nowrap}
+.gs-badge__dot{width:8px;height:8px;border-radius:var(--radius-pill);background:var(--color-text-muted)}
+.gs-badge--success .gs-badge__dot{background:var(--color-status-success)}
+.gs-badge--warning .gs-badge__dot{background:var(--color-status-warning)}
+.gs-badge--danger .gs-badge__dot{background:var(--color-status-danger)}
+.gs-badge--info .gs-badge__dot{background:var(--color-action-primary)}
+.verdict{display:flex;align-items:center;gap:var(--space-8);flex-wrap:wrap;font-size:12px;font-weight:600;color:var(--color-text-muted)}
+
+/* ===== Alert ===== */
+.gs-alert{background:var(--color-bg-surface-alt-1);border-radius:var(--radius-sm);padding:var(--space-12) var(--space-16);margin:var(--space-12) 0}
+.gs-alert__title{font-size:14px;font-weight:600;color:var(--color-text-primary);margin:0 0 2px;display:flex;align-items:center;gap:var(--space-8)}
+.gs-alert__title::before{content:"";width:8px;height:8px;border-radius:var(--radius-pill);background:var(--color-action-primary)}
+.gs-alert--warning .gs-alert__title::before{background:var(--color-status-warning)}
+.gs-alert__body{font-size:14px;color:var(--color-text-secondary);margin:0}
+
+/* ===== Map ===== */
+.mapgrid{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:var(--space-16)}
+.map{height:460px;border-radius:var(--radius-sm);border:1px solid var(--color-border-default);background:var(--color-bg-surface-alt-1)}
+.gframe{display:flex;flex-direction:column;border:1px solid var(--color-border-default);border-radius:var(--radius-sm);overflow:hidden;min-height:460px;background:var(--color-bg-surface)}
+.gframe__title{font-size:13px;font-weight:600;padding:var(--space-12) var(--space-16);border-bottom:1px solid var(--color-divider-default);color:var(--color-text-secondary)}
+.gframe iframe{flex:1;border:0;width:100%;min-height:300px}
+.legend{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-16);font-size:13px;color:var(--color-text-secondary);margin:0 0 var(--space-12)}
+.legend i{display:inline-block;width:20px;height:4px;border-radius:2px;vertical-align:middle;margin-right:6px}
+.route-steps{font-size:14px;color:var(--color-text-secondary);margin:var(--space-12) 0 0}
+.route-steps b{color:var(--color-text-primary)}
+
+/* ===== Node list ===== */
+.node{border:1px solid var(--color-border-default);border-radius:var(--radius-md);background:var(--color-bg-surface);padding:var(--space-20);margin-bottom:var(--space-12);cursor:pointer}
+.node:hover{border-color:var(--color-border-strong)}
+.node.sel{border-color:var(--color-action-primary);box-shadow:0 0 0 1px var(--color-action-primary)}
+.node-head{display:flex;justify-content:space-between;align-items:flex-start;gap:var(--space-12);flex-wrap:wrap}
+.nh-left{display:flex;gap:var(--space-12);align-items:flex-start}
+.num{flex:none;width:32px;height:32px;border-radius:var(--radius-pill);color:#fff;font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.node h3{font-size:16px;font-weight:700;margin:0;color:var(--color-text-strong)}
+.where{font-size:13px;color:var(--color-text-muted)}
+.where b{font-weight:600;color:var(--color-text-secondary)}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-12);margin:var(--space-16) 0 var(--space-8)}
+figure{margin:0}
+figure img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:var(--radius-sm);border:1px solid var(--color-border-default);background:var(--color-bg-surface-alt-1);display:block}
+figcaption{font-size:12px;color:var(--color-text-muted);margin-top:var(--space-4)}
+.node ul{margin:var(--space-12) 0 0;padding-left:18px;color:var(--color-text-secondary)}
+.node li{margin:var(--space-4) 0}
+.node li b{color:var(--color-text-primary)}
+.links{display:flex;flex-wrap:wrap;gap:var(--space-8) var(--space-16);align-items:center;font-size:13px;margin-top:var(--space-12);padding-top:var(--space-12);border-top:1px solid var(--color-divider-default)}
+.links .coord{color:var(--color-text-muted);font-family:var(--font-mono);font-size:12px}
+
+/* ===== Leaflet ===== */
+.pin{background:none;border:none}
+.pin div{width:28px;height:28px;border-radius:9999px;color:#fff;font:700 12px var(--font-sans);display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:var(--shadow-level-2)}
+.pin.od div{border-radius:var(--radius-xs);width:auto;padding:0 8px;height:24px;font-size:11px;white-space:nowrap}
+.leaflet-container{font-family:var(--font-sans)}
+.leaflet-popup-content-wrapper{border-radius:var(--radius-md);box-shadow:var(--shadow-level-2)}
+.leaflet-popup-content{font-size:13px;margin:12px 14px;line-height:1.5}
+.leaflet-popup-content b{font-weight:700}
+.leaflet-popup-content img{width:240px;border-radius:var(--radius-sm);display:block;margin:var(--space-8) 0}
+
+.gs-footer{font-size:12px;color:var(--color-text-muted);margin-top:var(--space-24)}
+
+/* ===== Planner ===== */
+.planner{display:grid;grid-template-columns:420px minmax(0,1fr);gap:var(--space-16);align-items:start}
+.planner .gs-card{margin-bottom:var(--space-16)}
+.gs-input,.gs-select{height:40px;width:100%;padding:0 var(--space-12);border:1px solid var(--color-border-strong);border-radius:var(--radius-sm);background:var(--color-bg-surface);color:var(--color-text-primary);font:400 14px var(--font-sans)}
+.gs-input::placeholder{color:var(--color-text-hint)}
+.gs-input:focus,.gs-select:focus{outline:2px solid var(--color-action-primary);outline-offset:0;border-color:var(--color-action-primary)}
+.gs-input.is-error{border-color:var(--color-status-danger)}
+.gs-select--sm,.gs-input--sm{height:34px;font-size:13px;padding:0 var(--space-8)}
+.field-error{font-size:12px;font-weight:600;color:var(--color-status-danger);margin-top:var(--space-4)}
+.gs-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--space-8);text-decoration:none}
+a.gs-btn{color:var(--color-text-primary)} a.gs-btn:hover{text-decoration:none;color:var(--color-text-primary)}
+.gs-btn--sm{height:32px;padding:0 var(--space-12);font-size:12px}
+.gs-btn--ghost{border-color:transparent;background:transparent;color:var(--color-text-secondary)}
+.gs-btn--block{width:100%}
+.gs-btn--primary{background:var(--color-action-primary);border-color:transparent;color:var(--color-text-on-primary);height:48px;font-size:16px}
+.gs-btn--primary:hover{background:var(--color-action-primary-hover)} .gs-btn--primary:active{background:var(--color-action-primary-active)}
+.gs-btn:disabled{background:var(--color-bg-disabled);color:var(--color-text-disabled);border-color:transparent;cursor:not-allowed}
+.btn-row{display:flex;flex-wrap:wrap;gap:var(--space-8);margin:var(--space-8) 0}
+.form-label{display:block;font-size:13px;font-weight:600;color:var(--color-text-secondary);margin:var(--space-16) 0 var(--space-8)}
+.hint{font-size:12px;color:var(--color-text-muted);margin:var(--space-4) 0 var(--space-8)}
+.pt-row{border:1px solid var(--color-border-default);border-radius:var(--radius-sm);padding:var(--space-12);margin-bottom:var(--space-8);background:var(--color-bg-surface)}
+.pt-row__top{display:flex;gap:var(--space-8);align-items:center}
+.pt-tag{flex:none;min-width:44px;height:28px;padding:0 var(--space-8);border-radius:var(--radius-xs);font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;color:var(--color-text-on-primary);background:var(--color-action-primary)}
+.pt-tag--start,.pt-tag--end{background:var(--color-action-secondary);color:var(--color-text-on-secondary)}
+.pt-row__bottom{display:flex;gap:var(--space-8);align-items:center;justify-content:space-between;margin-top:var(--space-8);flex-wrap:wrap}
+.pt-seg{display:flex;align-items:center;gap:var(--space-8);font-size:12px;font-weight:600;color:var(--color-text-muted);white-space:nowrap;min-width:0}
+.pt-seg select{width:auto;min-width:0}
+.pt-seg--block{display:flex;width:100%}
+.pt-seg--block select{flex:1;width:100%;white-space:normal}
+.pt-actions{display:flex;gap:2px}
+.seg{display:flex;border:1px solid var(--color-border-strong);border-radius:var(--radius-sm);overflow:hidden}
+.seg button{flex:1;height:36px;border:0;border-right:1px solid var(--color-border-default);background:var(--color-bg-surface);color:var(--color-text-secondary);font:400 13px var(--font-sans);cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed="true"]{background:var(--color-bg-surface-alt-1);color:var(--color-text-strong);font-weight:700}
+.gs-check{display:flex;gap:var(--space-8);align-items:center;font-size:14px;color:var(--color-text-primary);margin:var(--space-8) 0 0;cursor:pointer}
+.gs-check input{width:18px;height:18px;accent-color:var(--color-action-primary);margin:0}
+.status{font-size:13px;color:var(--color-text-muted);margin:var(--space-8) 0 0;min-height:20px}
+.status.is-error{color:var(--color-status-danger);font-weight:600}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-8) var(--space-12)}
+.form-grid label{display:flex;flex-direction:column;gap:var(--space-4);font-size:12px;font-weight:600;color:var(--color-text-secondary)}
+.form-grid .full{grid-column:1/-1}
+.veh-svg{display:block;width:100%;height:auto;margin:var(--space-12) 0 var(--space-4);background:var(--color-bg-surface-alt-1);border-radius:var(--radius-sm)}
+.save-row{display:flex;gap:var(--space-8)} .save-row .gs-btn{flex:none}
+.saved-item{display:flex;justify-content:space-between;align-items:center;gap:var(--space-8);padding:var(--space-8) 0;border-bottom:1px solid var(--color-divider-default);font-size:14px}
+.saved-item:last-child{border-bottom:0}
+.saved-item small{display:block;color:var(--color-text-muted);font-size:12px}
+.map--planner{height:560px}
+#map-planner.is-picking,#map-planner.is-picking .leaflet-grab{cursor:crosshair}
+.legend i.dot{width:10px;height:10px;border-radius:9999px}
+.result-head{display:flex;justify-content:space-between;align-items:center;gap:var(--space-8);flex-wrap:wrap}
+.sub-title{font-size:16px;font-weight:700;color:var(--color-text-strong);margin:var(--space-24) 0 var(--space-8)}
+.detail-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--space-16);margin-top:var(--space-12)}
+.sv-frame{width:100%;aspect-ratio:4/3;border:0;border-radius:var(--radius-sm);background:var(--color-bg-surface-alt-1);display:block}
+.metric-list{display:grid;grid-template-columns:auto 1fr;gap:var(--space-8) var(--space-16);margin:0;font-size:14px}
+.metric-list dt{color:var(--color-text-muted)} .metric-list dd{margin:0;font-weight:600;color:var(--color-text-primary)}
+.idea-list{margin:var(--space-8) 0 0;padding-left:18px;color:var(--color-text-secondary);font-size:14px}
+.idea-list li{margin:var(--space-4) 0}
+.gs-table tr.is-sel td{background:var(--color-bg-surface-alt-1)}
+.gs-table td.is-num,.gs-table th.is-num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.gs-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:3000;background:var(--color-bg-inverse);color:var(--color-text-inverse);padding:var(--space-12) var(--space-16);border-radius:var(--radius-sm);box-shadow:var(--shadow-level-3);font-size:14px}
+.empty{padding:var(--space-24);text-align:center;color:var(--color-text-muted);font-size:14px}
+.cand-list{display:flex;flex-direction:column;gap:6px;margin-top:var(--space-8)}
+.cand{display:flex;justify-content:space-between;align-items:center;gap:var(--space-8);width:100%;min-height:36px;padding:6px var(--space-12);border:1px solid var(--color-border-default);border-radius:var(--radius-sm);background:var(--color-bg-surface);color:var(--color-text-primary);font:400 13px var(--font-sans);text-align:left;cursor:pointer}
+.cand:hover,.cand:focus-visible{background:var(--color-bg-surface-alt-1);border-color:var(--color-border-strong)}
+.cand b{font-weight:600} .cand span{color:var(--color-text-muted);font-size:12px;white-space:nowrap}
+.pt-lock{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:var(--space-8);font-size:13px}
+.gs-btn[aria-pressed="true"]{background:var(--color-bg-surface-alt-1);font-weight:700}
+.gs-table td[rowspan]{vertical-align:top}
+#pl-steps{min-width:820px} #pl-ban table{min-width:820px} #pl-steps td:nth-child(2),#pl-steps td:nth-child(6),#pl-ban td:nth-child(3){white-space:nowrap}
+#pl-ban td:nth-child(3) .is-sub{white-space:nowrap}
+@media (max-width:1280px){.planner{grid-template-columns:1fr}}
+@media (max-width:720px){.detail-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}}
+
+/* ===== Responsive ===== */
+@media (max-width:1100px){.mapgrid{grid-template-columns:1fr}}
+@media (max-width:960px){
+  .gs-shell{grid-template-columns:1fr}
+  .gs-sidenav{position:sticky;top:var(--size-header-height);z-index:1050;height:auto;display:flex;gap:var(--space-4);overflow-x:auto;padding:var(--space-8) var(--space-12);border-right:0;border-bottom:1px solid var(--color-border-default)}
+  .gs-sidenav__section{display:contents}
+  .gs-sidenav__label{display:none}
+  .gs-sidenav__item{width:auto;flex:none;min-height:40px;white-space:nowrap}
+  .gs-sidenav__text small{display:none}
+  .gs-main{padding:var(--space-20)}
+}
+@media (max-width:720px){
+  .gs-header{padding:0 var(--space-20)}
+  .gs-header__meta span{display:none}
+  .gs-brand__service{font-size:16px}
+}
+@media print{
+  .gs-header{position:static}.gs-sidenav,.map,.gframe,.gs-btn{display:none}
+  .gs-shell{display:block}.view{display:block!important;page-break-after:always}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<header class="gs-header">
+  <a class="gs-brand" href="#" aria-label="GS건설 경로 조사">
+    <span class="gs-brand__logo gs-brand__logo--light" aria-hidden="true">{{LOGO_SVG}}</span><span class="gs-brand__logo gs-brand__logo--dark" aria-hidden="true">{{LOGO_DARK_SVG}}</span>
+    <span class="gs-brand__divider" aria-hidden="true"></span>
+    <span class="gs-brand__service">경로 조사</span>
+  </a>
+  <div class="gs-header__meta">
+    <span>Desktop Survey (1차) · 2026-10-23 · 필리핀 TF팀</span>
+    <button class="gs-btn" id="themeBtn" type="button">다크 모드</button>
+  </div>
+</header>
+
+<div class="gs-shell">
+  <nav class="gs-sidenav" aria-label="보고서 구성" role="tablist">
+    <div class="gs-sidenav__section">
+      <div class="gs-sidenav__label">보고서</div>
+      <button class="gs-sidenav__item" role="tab" data-tab="overview" aria-selected="true"><span class="gs-sidenav__dot" style="background:var(--color-action-primary)"></span><span class="gs-sidenav__text">개요·종합<small>전체 위치도 · 판정표</small></span></button>
+    </div>
+    <div class="gs-sidenav__section">
+      <div class="gs-sidenav__label">경로</div>
+      <button class="gs-sidenav__item" role="tab" data-tab="r1" aria-selected="false"><span class="gs-sidenav__dot" style="background:var(--route-r1)"></span><span class="gs-sidenav__text">경로 1 · Las Piñas 출발<small class="gs-num">4.8 km · 약 23분</small></span></button>
+      <button class="gs-sidenav__item" role="tab" data-tab="r2" aria-selected="false"><span class="gs-sidenav__dot" style="background:var(--route-r2)"></span><span class="gs-sidenav__text">경로 2 · Taguig C-6 출발<small class="gs-num">17.7 km · 약 40분</small></span></button>
+      <button class="gs-sidenav__item" role="tab" data-tab="common" aria-selected="false"><span class="gs-sidenav__dot" style="background:var(--route-common)"></span><span class="gs-sidenav__text">공통 구간 · Alabang~현장<small class="gs-num">약 1.1 km · N5~N9</small></span></button>
+    </div>
+    <div class="gs-sidenav__section">
+      <div class="gs-sidenav__label">도구</div>
+      <button class="gs-sidenav__item" role="tab" data-tab="planner" aria-selected="false"><span class="gs-sidenav__dot" style="background:var(--color-action-secondary)"></span><span class="gs-sidenav__text">경로 직접 설정<small>경유지 · 차량 회전 궤적 · 트럭 밴</small></span></button>
+    </div>
+    <div class="gs-sidenav__section">
+      <div class="gs-sidenav__label">검토</div>
+      <button class="gs-sidenav__item" role="tab" data-tab="risk" aria-selected="false"><span class="gs-sidenav__dot" style="background:var(--color-status-warning)"></span><span class="gs-sidenav__text">리스크·체크리스트<small>권고 조치 · 현장 확인 항목</small></span></button>
+    </div>
+  </nav>
+
+  <main class="gs-main">
+
+  <!-- ===== 개요 ===== -->
+  <section class="view active" id="v-overview">
+    <div class="gs-page-head">
+      <div class="gs-page-head__eyebrow">Route Survey Report</div>
+      <h1>Alabang 화물차 운송 경로 조사</h1>
+      <p>레미콘·트레일러 통행 적정성 검토 — Sitio Anahaw(Alabang, Muntinlupa) 현장 진입 경로 2개안</p>
+    </div>
+
+    <section class="gs-card">
+      <h2 class="gs-card__title">전체 위치도</h2>
+      <p class="gs-card__meta">번호 마커를 누르면 해당 경로 화면의 포인트로 이동합니다.</p>
+      <div class="legend">
+        <span><i style="background:var(--route-r1)"></i>경로 1 <span class="gs-num">(4.8 km)</span></span>
+        <span><i style="background:var(--route-r2)"></i>경로 2 <span class="gs-num">(17.7 km)</span></span>
+        <span><i style="background:var(--route-common)"></i>공통 구간 포인트</span>
+      </div>
+      <div id="map-overview" class="map" style="height:520px"></div>
+      <div class="gs-alert gs-alert--info" role="status">
+        <p class="gs-alert__title">두 경로는 Alabang에서 합류합니다</p>
+        <p class="gs-alert__body">두 경로 모두 SLEX 하부 회차 지점(N5)에서 합류한 뒤 Montillano St를 거쳐 현장으로 들어갑니다. N5~N9는 경로 선택과 관계없이 해결해야 하는 공통 병목입니다.</p>
+      </div>
+    </section>
+
+    <section class="gs-card">
+      <h2 class="gs-card__title">종합 판정표</h2>
+      <p class="gs-card__meta">행을 누르면 해당 포인트의 상세 화면으로 이동합니다.</p>
+      <div class="verdict" style="margin-bottom:12px">
+        <span class="gs-badge gs-badge--success"><span class="gs-badge__dot"></span>적합</span>통행 가능
+        <span class="gs-badge gs-badge--warning"><span class="gs-badge__dot"></span>조건부</span>제약·조치 필요
+        <span class="gs-badge gs-badge--danger"><span class="gs-badge__dot"></span>곤란</span>현 상태로 어려울 가능성 높음
+        <span class="gs-badge"><span class="gs-badge__dot"></span>미확인</span>현장 확인 필요
+      </div>
+      <div class="gs-table-wrap"><table class="gs-table" id="summary-table"></table></div>
+    </section>
+
+    <section class="gs-card">
+      <h2 class="gs-card__title">조사 개요</h2>
+      <div class="gs-table-wrap"><table class="gs-table gs-table--kv">
+        <tr><th>목적</th><td>Alabang 호숫가 현장(Sitio Anahaw)으로의 레미콘 및 트레일러 통행 가능성 사전 검토 — 도로 폭, 회전 반경, 상부 장애물, 통행 제약</td></tr>
+        <tr><th>도착지</th><td class="gs-num">14.419006, 121.051798</td></tr>
+        <tr><th>출발지</th><td class="gs-num">경로 1: 14.426705, 121.019811 (Las Piñas)<br>경로 2: 14.521974, 121.092257 (Taguig)</td></tr>
+        <tr><th>방법</th><td>Google Maps 경로 상세 단계로 포인트 추출 → 위성사진으로 평면 형상 개략 판독 → Street View로 노면·전선·노상 점유·상부 구조물 확인</td></tr>
+        <tr><th>한계</th><td>폭·반경은 위성사진 판독에 의한 개략치입니다. 일부 Street View는 2019년 촬영이거나 커버리지가 없습니다. 지도상 경로선은 Google 안내 단계를 따라 그린 근사 선형이며, Google 경로는 승용차 기준입니다.</td></tr>
+      </table></div>
+    </section>
+
+    <section class="gs-card">
+      <h2 class="gs-card__title">검토 대상 차량</h2>
+      <p class="gs-card__meta">가정치입니다. 실제 투입 차량 제원표로 갱신이 필요합니다.</p>
+      <div class="gs-table-wrap"><table class="gs-table">
+        <thead><tr><th>차종</th><th>전장</th><th>검토 포인트</th></tr></thead>
+        <tbody>
+          <tr><td>레미콘(믹서트럭, 6m³급)</td><td class="gs-num">약 8~9 m</td><td>좁은 도로 교행, 직각 회전 내륜차, 진입로 노면 지지력</td></tr>
+          <tr><td>세미트레일러 / 로우베드</td><td class="gs-num">약 15~18 m</td><td>U턴·직각 회전, 회차 공간, 상부 전선·구조물 높이</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+  </section>
+
+  <!-- ===== 경로 1 ===== -->
+  <section class="view" id="v-r1">
+    <div class="gs-page-head">
+      <div class="gs-page-head__eyebrow">경로 1</div>
+      <h1>Las Piñas → Alabang–Zapote Rd → 현장</h1>
+      <div class="gs-kpis">
+        <span class="gs-chip">거리 <b class="gs-num">4.8 km</b></span>
+        <span class="gs-chip">소요 <b class="gs-num">약 23분</b></span>
+        <span class="gs-chip">1차 의견 <span class="gs-badge gs-badge--success"><span class="gs-badge__dot"></span>우선 검토</span></span>
+      </div>
+    </div>
+    <section class="gs-card">
+      <div class="mapgrid">
+        <div id="map-r1" class="map"></div>
+        <div class="gframe"><div class="gframe__title" id="gt-r1">Google 지도 · 포인트를 선택하세요</div><iframe id="gf-r1" title="선택한 포인트의 Google 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+      <p class="route-steps"><b>Google 안내</b> · 출발지 진출로(이용 제한 도로) 210 m → Alabang–Zapote Rd 우회전 → Bridgeway Ave 우회전 → Spectrum Midway 좌회전 → Manila S Rd 합류 → <b>급좌회전(SLEX 하부 회차)</b> → Montillano St 700 m → 도착</p>
+    </section>
+    <div id="list-r1"></div>
+  </section>
+
+  <!-- ===== 경로 2 ===== -->
+  <section class="view" id="v-r2">
+    <div class="gs-page-head">
+      <div class="gs-page-head__eyebrow">경로 2</div>
+      <h1>Taguig → C-6 → SLEX → 현장</h1>
+      <div class="gs-kpis">
+        <span class="gs-chip">거리 <b class="gs-num">17.7 km</b></span>
+        <span class="gs-chip">소요 <b class="gs-num">약 40분</b> (SLEX 유료)</span>
+        <span class="gs-chip">레미콘 <span class="gs-badge gs-badge--warning"><span class="gs-badge__dot"></span>조건부</span></span>
+        <span class="gs-chip">트레일러 <span class="gs-badge gs-badge--danger"><span class="gs-badge__dot"></span>비권장</span></span>
+      </div>
+    </div>
+    <section class="gs-card">
+      <div class="mapgrid">
+        <div id="map-r2" class="map"></div>
+        <div class="gframe"><div class="gframe__title" id="gt-r2">Google 지도 · 포인트를 선택하세요</div><iframe id="gf-r2" title="선택한 포인트의 Google 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+      <p class="route-steps"><b>Google 안내</b> · 단지 내부도로 약 600 m → C-6 우회전 → <b>300 m 지점 U턴</b> → C-6 5.2 km → General Santos Ave → 회전교차로 → SLEX 6.9 km → Alabang 출구 → W Service Rd 600 m → <b>급좌회전(SLEX 하부 회차)</b> → Manila S Rd 400 m → Montillano St 650 m → 이용 제한 도로 47 m → 도착</p>
+    </section>
+    <div id="list-r2"></div>
+  </section>
+
+  <!-- ===== 공통 ===== -->
+  <section class="view" id="v-common">
+    <div class="gs-page-head">
+      <div class="gs-page-head__eyebrow">공통 구간</div>
+      <h1>SLEX 하부 회차 → Montillano St → 현장</h1>
+      <div class="gs-kpis">
+        <span class="gs-chip">거리 <b class="gs-num">약 1.1 km</b></span>
+        <span class="gs-chip">두 경로 모두 통과</span>
+      </div>
+    </div>
+    <section class="gs-card">
+      <div class="mapgrid">
+        <div id="map-common" class="map"></div>
+        <div class="gframe"><div class="gframe__title" id="gt-common">Google 지도 · 포인트를 선택하세요</div><iframe id="gf-common" title="선택한 포인트의 Google 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+      </div>
+    </section>
+    <div id="list-common"></div>
+  </section>
+
+  <!-- ===== 경로 직접 설정 ===== -->
+  <section class="view" id="v-planner">
+    <div class="gs-page-head">
+      <div class="gs-page-head__eyebrow">도구</div>
+      <h1>경로 직접 설정</h1>
+      <p>출발지와 도착지 사이에 경유지를 넣으면 그 순서대로 지나는 경로를 계산하고, 선택한 차량이 회전 지점에서 차지하는 궤적과 트럭 통행 제한을 함께 확인합니다.</p>
+    </div>
+    <div class="planner">
+      <div class="planner__side">
+        <section class="gs-card">
+          <h2 class="gs-card__title">지점 설정</h2>
+          <p class="gs-card__meta">Google 지도에서 지점을 우클릭해 복사한 좌표(예: 14.426705, 121.019811)나 지도 링크를 붙여넣거나, 오른쪽 지도를 클릭하십시오. 좌회전 대신 우회전 후 좌회전으로 가려면 우회전해 들어갈 도로 위에 경유지를 찍으면 됩니다.</p>
+          <div class="btn-row">
+            <button class="gs-btn gs-btn--sm" type="button" data-preset="r1">경로 1 불러오기</button>
+            <button class="gs-btn gs-btn--sm" type="button" data-preset="r2">경로 2 불러오기</button>
+            <button class="gs-btn gs-btn--sm gs-btn--ghost" type="button" data-preset="reset">모두 지우기</button>
+          </div>
+          <div id="pl-list"></div>
+          <button class="gs-btn gs-btn--block" id="pl-add" type="button">경유지 추가</button>
+          <span class="form-label" id="pl-mode-label">지도 클릭 시</span>
+          <div class="seg" role="group" aria-labelledby="pl-mode-label">
+            <button type="button" data-mode="via" aria-pressed="true">경유지 추가</button>
+            <button type="button" data-mode="start" aria-pressed="false">출발지</button>
+            <button type="button" data-mode="end" aria-pressed="false">도착지</button>
+            <button type="button" data-mode="off" aria-pressed="false">사용 안 함</button>
+          </div>
+          <p class="hint">마커는 끌어서 옮길 수 있고, 경유지 마커를 누르면 삭제할 수 있습니다. 지도 클릭으로 넣은 경유지는 경로 순서상 가장 자연스러운 위치에 자동으로 들어갑니다.</p>
+          <span class="form-label">경로 옵션</span>
+          <label class="gs-check"><input type="checkbox" id="pl-ground" checked> 경유지를 지상 일반도로에 자동 배치</label>
+          <p class="hint">고가도로·고속도로와 일반도로가 겹치는 곳에서는 경유지 아래에 주변 도로 후보가 고가·지상 구분과 함께 나타납니다. 원하는 도로를 고르면 경로가 그 도로를 지나도록 고정됩니다.</p>
+          <label class="gs-check"><input type="checkbox" id="pl-uturn"> 경유지에서 U턴 허용</label>
+          <p class="hint">U턴 허용을 끄면 경유지를 지나 진행 방향 그대로 이어가는 경로만 찾습니다. 대형차 검토에는 끈 상태를 권장합니다.</p>
+          <label class="gs-check"><input type="checkbox" id="pl-keepright" checked> 우측 차로 주행 기준으로 궤적 계산</label>
+          <label class="gs-check"><input type="checkbox" id="pl-ref" checked> 보고서 경로(경로 1·2) 함께 표시</label>
+          <button class="gs-btn gs-btn--primary gs-btn--block" id="pl-calc" type="button" style="margin-top:16px">경로 계산하기</button>
+          <p class="status" id="pl-status" aria-live="polite"></p>
+        </section>
+
+        <section class="gs-card">
+          <h2 class="gs-card__title">차량</h2>
+          <p class="gs-card__meta">일반적인 제원을 기본값으로 넣었습니다. 실제 투입 차량 제원표의 값으로 바꾸십시오.</p>
+          <label class="form-label" for="veh-preset" style="margin-top:0">차종</label>
+          <select class="gs-select" id="veh-preset"></select>
+          <svg class="veh-svg" id="veh-svg" viewBox="0 0 400 90" role="img" aria-label="차량 평면 개략도"></svg>
+          <p class="hint" id="veh-summary"></p>
+          <div class="form-grid" id="veh-form"></div>
+        </section>
+
+        <section class="gs-card">
+          <h2 class="gs-card__title">운행 조건</h2>
+          <div class="form-grid">
+            <label class="full">출발 일시<input class="gs-input" type="datetime-local" id="pl-depart"></label>
+            <label class="full">화물 구분<select class="gs-select" id="pl-cargo">
+              <option value="general">일반 건설자재·장비</option>
+              <option value="essential">필수·부패성 화물</option>
+              <option value="fuel">유류 탱크로리</option>
+              <option value="permit">MMDA 특별허가 보유</option>
+            </select></label>
+            <label class="full">대형차 소요시간 보정<select class="gs-select" id="pl-factor">
+              <option value="1.2">승용차 대비 ×1.2</option>
+              <option value="1.3" selected>승용차 대비 ×1.3</option>
+              <option value="1.5">승용차 대비 ×1.5 (혼잡)</option>
+            </select></label>
+          </div>
+        </section>
+
+        <section class="gs-card">
+          <h2 class="gs-card__title">저장한 경로</h2>
+          <p class="gs-card__meta">이 브라우저에만 저장됩니다. 다른 사람에게는 링크 복사로 전달하십시오.</p>
+          <div class="save-row"><input class="gs-input" id="pl-name" placeholder="경로 이름 (예: 경로 1 우회안)" aria-label="경로 이름"><button class="gs-btn" id="pl-save" type="button">저장하기</button></div>
+          <div id="pl-saved"></div>
+        </section>
+      </div>
+
+      <div class="planner__main">
+        <section class="gs-card">
+          <div id="map-planner" class="map map--planner is-picking"></div>
+          <div class="legend" style="margin:12px 0 0">
+            <span><i style="background:#0f6fff"></i>계산 경로</span>
+            <span><i style="background:repeating-linear-gradient(90deg,#0f6fff 0 5px,transparent 5px 9px)"></i>직선 연결</span>
+            <span><i style="background:#00bdde"></i>차량 궤적(선택 지점)</span>
+            <span><i class="dot" style="background:var(--color-status-danger)"></i>곤란</span>
+            <span><i class="dot" style="background:var(--color-status-warning)"></i>조건부</span>
+            <span><i class="dot" style="background:var(--color-status-success)"></i>양호</span>
+          </div>
+        </section>
+
+        <section class="gs-card" id="pl-detail" hidden>
+          <div class="result-head">
+            <h2 class="gs-card__title" id="pd-title">회전 지점</h2>
+            <div class="btn-row" style="margin:0">
+              <button class="gs-btn gs-btn--sm" type="button" id="pd-prev">이전 지점</button>
+              <button class="gs-btn gs-btn--sm" type="button" id="pd-next">다음 지점</button>
+            </div>
+          </div>
+          <div class="detail-grid">
+            <div>
+              <iframe class="sv-frame" id="pd-sv" title="회전 지점 Street View" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+              <div class="seg" role="group" aria-label="Street View 방향" style="margin-top:8px">
+                <button type="button" data-svdir="in" aria-pressed="true">진입 방향</button>
+                <button type="button" data-svdir="out" aria-pressed="false">진출 방향</button>
+                <button type="button" data-svdir="side" aria-pressed="false">회전 안쪽</button>
+              </div>
+              <div class="btn-row"><a class="gs-btn gs-btn--sm" id="pd-svlink" target="_blank" rel="noopener">Street View 새 창</a><button class="gs-btn gs-btn--sm" type="button" id="pd-ask">Claude 검토 요청 문구 복사</button></div>
+            </div>
+            <div>
+              <dl class="metric-list" id="pd-metrics"></dl>
+              <div class="sub-title" style="margin-top:16px">검토 의견·개선 아이디어</div>
+              <ul class="idea-list" id="pd-ideas"></ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="gs-card" id="pl-result" hidden>
+          <div class="result-head">
+            <h2 class="gs-card__title">계산 결과</h2>
+            <div class="btn-row" style="margin:0"><a class="gs-btn gs-btn--sm" id="pl-gmaps" target="_blank" rel="noopener">Google 지도에서 열기</a><button class="gs-btn gs-btn--sm" id="pl-copy" type="button">좌표 복사</button><button class="gs-btn gs-btn--sm" id="pl-link" type="button">링크 복사</button></div>
+          </div>
+          <div class="gs-kpis" id="pl-kpis"></div>
+          <div id="pl-warns"></div>
+
+          <div class="sub-title">회전 지점 검토</div>
+          <p class="hint">행을 누르면 지도에 차량 궤적을 겹쳐 보여주고, 위에 Street View와 검토 의견이 나타납니다. 필요 폭과 도로 폭은 추정치이므로 위성사진 위 궤적과 Street View로 직접 확인하십시오.</p>
+          <div class="gs-table-wrap"><table class="gs-table" id="pl-steps"></table></div>
+
+          <div class="sub-title">트럭 통행 제한 (Truck Ban)</div>
+          <div id="pl-ban"></div>
+
+          <div class="sub-title">도로 제한 표지 (OpenStreetMap)</div>
+          <div id="pl-restrict"></div>
+
+          <div class="sub-title">차량 규정 점검</div>
+          <div id="pl-vehcheck"></div>
+
+          <p class="hint" style="margin-top:16px">경로는 OpenStreetMap 도로 데이터(OSRM)로 계산하며 일방통행·회전 제한을 반영합니다. 대형차 통행 제한·도로 폭은 반영되지 않습니다. 회전 궤적은 앞축이 차로를 따라가고 뒷축이 끌려오는 단순 모델(트랙트릭스)로 계산한 추정치이며, 정밀 검토는 AutoTURN 등 전용 프로그램으로 하십시오.</p>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 리스크 ===== -->
+  <section class="view" id="v-risk">
+    <div class="gs-page-head">
+      <div class="gs-page-head__eyebrow">검토</div>
+      <h1>리스크 및 현장 확인 항목</h1>
+    </div>
+    <section class="gs-card">
+      <h2 class="gs-card__title">주요 리스크 및 권고</h2>
+      <div class="gs-table-wrap"><table class="gs-table">
+        <thead><tr><th>#</th><th>리스크</th><th>관련</th><th>영향</th><th>권고 조치</th></tr></thead>
+        <tbody>
+          <tr><td class="gs-num">1</td><td>현장 진입부 협소·비포장</td><td>N8</td><td>전 차종 공통 병목, 트레일러 진입 곤란</td><td>진입로 실측 후 확폭·포장, 전선 이설; 바랑가이·토지 소유자 사전 협의</td></tr>
+          <tr><td class="gs-num">2</td><td>SLEX 하부 회차 (사실상 U턴)</td><td>N5</td><td>두 경로 공통, 트레일러 회전 가능 여부 미확인</td><td>현장 주행·드론 확인, Swept Path 검토; 불가 시 Alabang 교차로 직진 진입 허가 협의</td></tr>
+          <tr><td class="gs-num">3</td><td>Montillano St 회차 불가</td><td>N6·N7</td><td>후진 진입·역방향 운행 위험</td><td>현장 내 회차 동선 확보, 유도원 배치</td></tr>
+          <tr><td class="gs-num">4</td><td>경로 2 추가 회전 병목</td><td>N3·N4</td><td>트레일러 통행 사실상 곤란</td><td>트레일러는 경로 1 사용; 경로 2는 레미콘 한정 검토 또는 출발지 조정</td></tr>
+          <tr><td class="gs-num">5</td><td>통행 시간 제한</td><td>N2·N5</td><td>주간 운행 불가 시 야간 타설 필요</td><td>문틴루파시 조례 및 MMDA 트럭 밴 최신 고시 확인, 통행 허가 신청</td></tr>
+          <tr><td class="gs-num">6</td><td>상부 전선·고가 구조물</td><td>N5~N8</td><td>적재 높이 큰 화물 통행 제한</td><td>횡단 전선 높이 실측, 고가 하부 차고 확인</td></tr>
+          <tr><td class="gs-num">7</td><td>상습 정체</td><td>N2·N5</td><td>레미콘 운반 시간 초과 위험</td><td>배처플랜트 출발 시간 조정, 시간대별 소요시간 실측</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+    <section class="gs-card">
+      <h2 class="gs-card__title">현장 확인 체크리스트</h2>
+      <div class="gs-table-wrap"><table class="gs-table">
+        <thead><tr><th>확인</th><th>항목</th><th>위치</th><th>방법</th></tr></thead>
+        <tbody>
+          <tr><td>☐</td><td>진입로 유효폭, 담장 모서리, 노면 상태, 횡단 전선 높이</td><td>N8</td><td>레이저 거리계·측고봉 실측, 사진</td></tr>
+          <tr><td>☐</td><td>SLEX 하부 회차 지점 차고·교각 간격·회전 반경</td><td>N5</td><td>현장 주행, 드론 촬영</td></tr>
+          <tr><td>☐</td><td>C-6 중앙분리대 개구부 폭, 전폭</td><td>N4</td><td>위성 실측 후 현장 확인</td></tr>
+          <tr><td>☐</td><td>출발지 진출로 소유·통행 허가, 게이트 폭</td><td>N1</td><td>부지 관리자 확인</td></tr>
+          <tr><td>☐</td><td>문틴루파·라스피냐스 트럭 통행 제한 현행 조례</td><td>N2, N5</td><td>시청 교통관리국·MMDA 문의</td></tr>
+          <tr><td>☐</td><td>현장 내 회차·대기 공간, 노반 지지력</td><td>N9</td><td>배치계획 검토, 지반 확인</td></tr>
+          <tr><td>☐</td><td>Swept Path 분석 (레미콘·세미트레일러)</td><td>N3, N4, N5, N8</td><td>위성사진 축척 맞춤 후 AutoTURN</td></tr>
+          <tr><td>☐</td><td>실차 시험 주행</td><td>전 구간</td><td>운송 하도급사 동행</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+    <section class="gs-card">
+      <h2 class="gs-card__title">트럭 통행 제한·벌금 규정</h2>
+      <p class="gs-card__meta">공개 자료 기준 요약입니다. 시간대·금액은 수시로 바뀌므로 운행 전 MMDA와 해당 시 교통관리국에 현행 기준을 확인하십시오.</p>
+      <div class="gs-table-wrap"><table class="gs-table">
+        <thead><tr><th>구분</th><th>근거</th><th>금지 시간대</th><th>대상·범위</th><th>벌금·처분</th><th>확인 수준</th></tr></thead>
+        <tbody>
+          <tr><td>MMDA 통합 트럭 밴</td><td>MMDA 발표 (2026-04 보도)</td><td class="gs-num">06:00–09:00<br>16:00–20:00</td><td>메트로 마닐라. 필수·부패성 화물, 유류 탱크로리는 예외(에너지 비상 조치에 따른 한시 조치). 같은 시기 배송·통과 수수료 징수 중단</td><td>₱2,000 · 3회 적발 시 운전면허 1년 정지 (2019 자료)</td><td><span class="gs-badge gs-badge--warning"><span class="gs-badge__dot"></span>현행 확인 필요</span></td></tr>
+          <tr><td>화물차 정의</td><td>MMDA Reg. 99-002</td><td>—</td><td>총중량 4,500 kg 초과 화물차(적재·공차 무관)가 트럭 밴 대상</td><td>—</td><td><span class="gs-badge gs-badge--success"><span class="gs-badge__dot"></span>원문 확인</span></td></tr>
+          <tr><td>문틴루파시</td><td>Ord. No. 11-022</td><td class="gs-num">06:00–10:00<br>16:00–21:00</td><td>시 전역(노선 미지정). 2023년 메트로 마닐라 교통법·단일 티켓 제도 채택(Ord. 2023-055)</td><td>통합 벌금표에 트럭 밴·과적·통행 방해 항목 포함(금액 확인 필요)</td><td><span class="gs-badge gs-badge--warning"><span class="gs-badge__dot"></span>2019 자료</span></td></tr>
+          <tr><td>라스피냐스시</td><td>Ord. No. 652-04</td><td class="gs-num">06:00–09:00<br>16:00–20:00</td><td>2차로 이하 시 도로 통행 금지</td><td>확인 필요</td><td><span class="gs-badge gs-badge--warning"><span class="gs-badge__dot"></span>2019 자료</span></td></tr>
+          <tr><td>타기그시</td><td>Ord. No. 103 s.2003</td><td class="gs-num">06:00–09:00<br>16:00–20:00</td><td>2차로 이하 시 도로 통행 금지. BGC는 별도 규정</td><td>확인 필요</td><td><span class="gs-badge gs-badge--warning"><span class="gs-badge__dot"></span>2019 자료</span></td></tr>
+          <tr><td>파라냐케시</td><td>Ord. No. 05-04 s.2004</td><td class="gs-num">06:00–09:00<br>16:00–20:00</td><td>2차로 이하 시 도로 통행 금지</td><td>확인 필요</td><td><span class="gs-badge gs-badge--warning"><span class="gs-badge__dot"></span>2019 자료</span></td></tr>
+          <tr><td>과적</td><td>RA 8794 · DPWH</td><td>24시간 단속</td><td>축중 13.5 t 초과 또는 축 구성별 총중량 한도 초과(예: 3축 10W 33,300 kg, 세미 3+3축 42,000 kg)</td><td>자동차 사용자 부담금(MVUC)의 25% · 한도 5% 미만 초과는 면제 가능</td><td><span class="gs-badge gs-badge--success"><span class="gs-badge__dot"></span>원문 확인</span></td></tr>
+          <tr><td>규격 초과·분리 불가 화물</td><td>DPWH Special Permit</td><td>허가 조건</td><td>총중량 한도 초과 또는 표에 없는 축 구성 차량. 차량 제원도, 통과 노선·교량 도면 제출</td><td>무허가 운행 시 과적 처분 준용</td><td><span class="gs-badge gs-badge--success"><span class="gs-badge__dot"></span>원문 확인</span></td></tr>
+          <tr><td>고속도로 구간</td><td>운영사·TRB 규정</td><td>—</td><td>SLEX·Skyway 등은 시 트럭 밴이 아니라 유료도로 운영사 규정을 따름(차종별 통행료·하중 제한)</td><td>운영사 기준</td><td><span class="gs-badge"><span class="gs-badge__dot"></span>별도 확인</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+    <section class="gs-card">
+      <h2 class="gs-card__title">참고</h2>
+      <ul style="margin:0;padding-left:18px;color:var(--color-text-secondary)">
+        <li>Google Maps 경로·위성사진·Street View (2026-10-23 조회). 포인트별 촬영 시기는 사진 설명을 참고하십시오.</li>
+        <li>경로선: OpenStreetMap 기반 OSRM으로 Google 안내 단계를 따라 재현한 근사 선형입니다.</li>
+        <li><a href="https://wiki.aaroads.com/wiki/N411_(Philippines)" target="_blank" rel="noopener">N411 (Alabang–Zapote Road) — AARoads Wiki</a></li>
+        <li><a href="https://philstar.com/metro/2002/09/11/175565/muntinlupa-truck-ban-effect" target="_blank" rel="noopener">Muntinlupa truck ban in effect — Philstar (2002)</a></li>
+        <li><a href="https://www.philstar.com/nation/2026/04/16/2521267/mmda-suspends-delivery-pass-through-fees-ncr" target="_blank" rel="noopener">MMDA suspends delivery, pass-through fees in NCR — Philstar (2026-04-16)</a></li>
+        <li><a href="https://ncts.upd.edu.ph/tssp/wp-content/uploads/2019/09/TSSP2019-03_Review-of-the-National-and-Cities%E2%80%99-Truck-Policies-in-Metro-Manila.pdf" target="_blank" rel="noopener">Review of the National and Cities' Truck Policies in Metro Manila — UP NCTS (2019)</a></li>
+        <li><a href="https://elibrary.judiciary.gov.ph/thebookshelf/showdocs/10/40826" target="_blank" rel="noopener">MMDA Regulation No. 99-002 (화물차 정의) — Supreme Court E-Library</a></li>
+        <li><a href="https://muntinlupacity.gov.ph/wp-content/uploads/2023/03/Ordinance-No.-2023-055.pdf" target="_blank" rel="noopener">Muntinlupa City Ordinance No. 2023-055 (메트로 마닐라 교통법 채택)</a></li>
+        <li><a href="https://portcalls.com/ph-public-works-enforces-stricter-load-rules-for-trucks-trailers" target="_blank" rel="noopener">DPWH 과적 기준·특별허가 — PortCalls Asia</a></li>
+        <li><a href="https://www.autoindustriya.com/commerce/what-why-where-and-when-the-metro-manila-truck-ban-explained.html" target="_blank" rel="noopener">The Metro Manila Truck Ban explained — AutoIndustriya (2019)</a></li>
+      </ul>
+    </section>
+  </section>
+
+  <p class="gs-footer">본 보고서는 공개 지도·영상 자료 기반의 1차 데스크톱 조사이며, 폭·반경 수치는 개략치입니다. 최종 경로는 현장 실측, Swept Path 분석, 시험 주행 결과로 확정합니다. 지도·사진은 온라인으로 불러오므로 인터넷 연결이 필요합니다.</p>
+  </main>
+</div>
+
+<script>
+{{SCRIPT}}
+</script>
+</body>
+</html>
